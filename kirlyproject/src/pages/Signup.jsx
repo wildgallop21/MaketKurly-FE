@@ -1,460 +1,404 @@
-import React from "react";
+import React , {useState}from "react";
 import styled from "styled-components";
+import Input from "../elements/Input";
+import More from "../elements/More";
+import Check from "../elements/Check";
+
+
+
 
 
 const Signup=()=>{
+
+    //컬러값 가져다가 쓰기 기본,성공,실패 시 각각..
+    const color = {
+        default: "rgb(82,82,82)",
+        success: "rgb(51, 141, 39)",
+        fail: "rgb(228, 56, 56)",
+    };
+//이름 아이디 받기
+    const [id, setId] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordCheck, setPasswordCheck] = useState("");
+    const [name, setName] = useState("");
+
+    const [idColor, setIdColor] = useState("");
+    const [pwColor1, setPwColor1] = useState("");
+    const [pwColor2, setPwColor2] = useState("");
+    const [pwColor3, setPwColor3] = useState("");
+    const [pwcColor, setPwcColor] = useState("");
+
+//포커스 했을 때 - 컬러값도 설정해주기
+    const [idFocus, setIdFocus] = useState(false);
+    const [passwordFocus, setPasswordFocus] = useState(false);
+    const [passwordCheckFocus, setPassworcCheckFocus] = useState(false);
+    const [eventClick, setEventClick] = useState(false);
+
+    function onIdMouseFocus() {
+        setIdFocus(true);
+        setIdColor(color.default);
+      }
+      function onPasswordMouseFocus() {
+        setPasswordFocus(true);
+        setPwColor1(color.default);
+        setPwColor2(color.default);
+        setPwColor3(color.default);
+      }
+      function onPasswordCheckMouseFocus() {
+        setPassworcCheckFocus(true);
+        setPwcColor(color.default);
+      }
+      function onEventClick() {
+        setEventClick(true);
+      }
+
     return (
-        <SignUPContainer>
-            <Title>회원가입</Title>
-
-            <Subdiv>
-                <Sub>
-                    <span>*</span>
-                    필수입력사항
-                </Sub>
-
-                <div styled={{width:"300px"}}>
-                    <IDdiv>
-                        <label>아이디<span>*</span></label>
-                        <input
-                        id= "user_id"
-                        name = "user_id"
-                        placeholder="아이디를 입력해주세요"
+        <SignupMainStyle>
+        <SignupContainer>
+          <SignupTitleBoxStyle>
+            <SignupTitleStyle>회원가입</SignupTitleStyle>
+            <SignupEssentialStyle>
+              <SignupStarstyle>*</SignupStarstyle>필수입력사항
+            </SignupEssentialStyle>
+          </SignupTitleBoxStyle>
+          <SignupBox>
+            <SignupForm>
+              <SignupTable>
+                <tbody>
+                  <SignupTr>
+                    <SignupTh>
+                      아이디<SignupStarstyle>*</SignupStarstyle>
+                    </SignupTh>
+                    <SignupTd>
+                      <Input
+                        value={id}
+                        onFocus={onIdMouseFocus}
                         type="text"
-                         />
-                         <button><span>중복확인</span></button>
-                    </IDdiv>
-
-                    <PWdiv>
-                        <label>비밀번호<span>*</span></label>
-                        <input
-                        id= "password"
-                        name = "password"
+                        placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
+                      />
+                      <SignupDupbtnStyle>중복확인</SignupDupbtnStyle>
+                      {idFocus && <More color={idColor}></More>}
+                    </SignupTd>
+                  </SignupTr>
+  
+                  <SignupTr>
+                    <SignupTh>
+                      비밀번호<SignupStarstyle>*</SignupStarstyle>
+                    </SignupTh>
+                    <SignupTd>
+                      <Input
+                        onFocus={onPasswordMouseFocus}
+                        type="password"
                         placeholder="비밀번호를 입력해주세요"
+                      />
+                      {passwordFocus && (
+                        <>
+                          <More color={pwColor1}></More>
+                          <More color={pwColor2}></More>
+                          <More color={pwColor3}></More>
+                        </>
+                      )}
+                    </SignupTd>
+                  </SignupTr>
+  
+                  <SignupTr>
+                    <SignupTh>
+                      비밀번호확인<SignupStarstyle>*</SignupStarstyle>
+                    </SignupTh>
+                    <SignupTd>
+                      <Input
+                        onFocus={onPasswordCheckMouseFocus}
                         type="password"
-                         />
-                    </PWdiv>
-
-                    <PWCNdiv>
-                        <label>비밀번호 확인<span>*</span></label>
-                        <input
-                        id= "passwordConfirm"
-                        name = "passwordConfirm"
                         placeholder="비밀번호를 한번 더 입력해주세요"
-                        type="password"
-                         />
-                    </PWCNdiv>
-
-                    <Namediv>
-                        <label>이름<span>*</span></label>
-                        <input
-                        id= "name"
-                        name = "name"
-                        placeholder="이름을 입력해주세요"
-                        type="text"
-                         />
-                    </Namediv>
-
-                    <Emdiv>
-                        <label>이메일<span>*</span></label>
-                        <input
-                        id= "email"
-                        name = "email"
-                        placeholder="예: marketkurly@kurly.com"
-                        type="text"
-                         />
-                         <button><span>중복확인</span></button>
-                    </Emdiv>
-
-                    <Phonediv>
-                        <label>휴대폰<span>*</span></label>
-                        <input
-                        id= "mobileNumber"
-                        name = "mobileNumber"
-                        placeholder="숫자만 입력해주세요"
-                        type="tel"
-                         />
-                         <button><span>인증번호 받기</span></button>
-                    </Phonediv>
-
-                    <Maildiv>
-                    <label>주소<span>*</span></label>
-                    <div>
-                    <button styled={{ height: "44", radius:"4px"}}>
-                        <span><img src="https://res.kurly.com/pc/service/cart/2007/ico_search.svg" />주소검색</span>
-                    </button>
-                    <span>배송지에 따라 상품 정보가 달라질 수 있습니다.</span>
-                    </div>
-                    </Maildiv>
-
-                    <div>
-                        <label>성별</label>
-                        <input 
-                        id="gender-man"
-                        name="gender"
-                        type="radio"
-                        value="MALE"/>
-                        <span>남자</span>
-                        <input 
-                        id="gender-woman"
-                        name="gender"
-                        type="radio"
-                        value="FEMALE"/>
-                        <span>여자</span>
-                        <input 
-                        id="gender-none"
-                        name="gender"
-                        type="radio"
-                        value="NONE"/>
-                        <span>선택안함</span>
-                    </div>
-
-                    <div>
-                        <label>생년월일</label>
+                      />
+                      {passwordCheckFocus && (
+                        <More color={pwcColor}></More>
+                      )}
+                    </SignupTd>
+                  </SignupTr>
+  
+                  <SignupTr>
+                    <SignupTh>
+                      이름<SignupStarstyle>*</SignupStarstyle>
+                    </SignupTh>
+                    <SignupTd>
+                      <Input placeholder="이름을 입력해주세요" />
+                    </SignupTd>
+                  </SignupTr>
+                  <SignupTr>
+                    <SignupTh>
+                      이메일<SignupStarstyle>*</SignupStarstyle>
+                    </SignupTh>
+                    <SignupTd>
+                      <Input placeholder="예: dsfdsf@gmail.com" />
+                      <SignupDupbtnStyle>중복확인</SignupDupbtnStyle>
+                    </SignupTd>
+                  </SignupTr>
+                  <SignupTr>
+                    <SignupTh>
+                      휴대폰<SignupStarstyle>*</SignupStarstyle>
+                    </SignupTh>
+                    <SignupTd>
+                      <Input placeholder="숫자만 입력해주세요" />
+                    </SignupTd>
+                  </SignupTr>
+                  <SignupTr>
+                    <SignupTh>
+                      주소<SignupStarstyle>*</SignupStarstyle>
+                    </SignupTh>
+                    <SignupTd>
+                      <button
+                        color="var(--main-purple)"
+                        background="white"
+                        font="var(--small-font)"
+                        pad="10px 150px"
+                      />
+                      <More
+                        color="rgb(82, 82, 82)"
+                        text="배송지에 따라 물품이 다를 수 있습니다"
+                      ></More>
+                    </SignupTd>
+                  </SignupTr>
+                  <SignupTr>
+                    <SignupTh>성별</SignupTh>
+                    <SignupTd>
+                      <SignupCheckBox>
                         <div>
-                            <input
-                            name="birthYear"
-                            placeholder="YYYY"
-                            type="text"
+                          <SignupInputstyle
+                            type="radio"
+                            id="woman"
+                            name="gender"
                           />
-                          <span>/</span>
-                          <input 
-                            name="birthMonth"
-                            placeholder="MM"
-                            type="text"
-                          />
-                          <span>/</span>
-                          <input 
-                            name="birthDay"
-                            placeholder="DD"
-                            type="text"
-                          /> 
+                          <label htmlFor="woman">여성</label>
+                        </div>
+  
+                        <div>
+                          <SignupInputstyle type="radio" id="man" name="gender" />
+                          <label htmlFor="man">남성</label>
                         </div>
                         <div>
-                            <label>추가입력 사항</label>
-                            <div>
-                                <input 
-                                id="additional-recommand"
-                                type="radio"
-                                value="RECOMMAND"/>
-                                <span>추천인 아이디</span>
-                                <input 
-                                name="joinExtraInput"
-                                placeholder="추천인 아이디를 입력해주세요."
-                                text="text"
-                                />
-                                <span>가입 이후는 수정이 불가능합니다. 대소문자 및 띄어쓰기에 유의해주세요.</span>
-                            </div>
-                            <div>
-                                <button 
-                                type="submit"
-                                styled={{width:"240", height:"56", radius:"3"}}
-                                ><span
-                                styled={{
-                                    display: "inline-block",
-                                    fontsize: "16px",
-                                    fontweight: "500",
-                                }}>가입하기</span></button>
-                            </div>
-
+                          <SignupInputstyle
+                            type="radio"
+                            id="nocheck"
+                            name="gender"
+                          />
+                          <label htmlFor="nocheck">선택 안함</label>
                         </div>
-                    </div>
-                </div>
-            </Subdiv>
-        </SignUPContainer>
-    )
-}
+                      </SignupCheckBox>
+                    </SignupTd>
+                  </SignupTr>
+                  <SignupTr>
+                    <SignupTh>생년월일</SignupTh>
+                    <SignupTd>
+                      <SignupBirthDiv>
+                        <input type="text" placeholder="YYYY" />/
+                        <input type="text" placeholder="MM" />/
+                        <input type="text" placeholder="DD" />
+                      </SignupBirthDiv>
+                    </SignupTd>
+                  </SignupTr>
+                  <SignupTr>
+                    <SignupTh>추가입력 사항</SignupTh>
+                    <SignupTd>
+                      <SignupCheckBox>
+                        <div>
+                          <SignupInputstyle
+                            onClick={onEventClick}
+                            type="radio"
+                            id="recommend_id"
+                            name="add_input"
+                          />
+                          <label htmlFor="recommend_id">추천인 아이디</label>
+                        </div>
+  
+                        <div>
+                          <SignupInputstyle
+                            onClick={onEventClick}
+                            type="radio"
+                            id="event"
+                            name="add_input"
+                          />
+                          <label htmlFor="event">참여 이벤트명</label>
+                        </div>
+                      </SignupCheckBox>
+                      {eventClick && (
+                        <div className="add_event_box">
+                          <Input
+                            type="text"
+                            placeholder="추천인 아이디를 입력해주세요."
+                          />
+  
+                          <More
+                            color={color.default}
+                            text="추천인 아이디와 참여 이벤트명 중 하나만 선택 가능합니다."
+                          ></More>
+                          <More
+                            color={color.default}
+                            text="가입 이후, 수정이 불가합니다."
+                          ></More>
+                          <More
+                            color={color.default}
+                            text="대소문자 및 띄어쓰기에 유의해주세요."
+                          ></More>
+                        </div>
+                      )}
+                    </SignupTd>
+                  </SignupTr>
+                </tbody>
+              </SignupTable>
+            </SignupForm>
+          </SignupBox>
+  
+          <Check></Check>
+        </SignupContainer>
+  
+        <SignupBtn type="submit">
+          가입하기
+        </SignupBtn>
+      </SignupMainStyle>
+    );
+  }
 
-export default Signup;
-
-
-const SignUPContainer= styled.div`
-min-width: 1050px;
-    margin-top: 50px;
-    margin-bottom: 60px;
-    background-color: rgb(255, 255, 255);
-`
-
-const Title = styled.div`
-    margin-bottom: 50px;
-    font-size: 28px;
-    line-height: 35px;
-    font-weight: 500;
-    text-align: center;
+  export default Signup;
+  
+  const SignupMainStyle = styled.main`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  `;
+  
+  const SignupContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `;
+  
+  const SignupTitleBoxStyle = styled.div`
+    width: 650px;
+    border-bottom: 2px solid black;
+    margin-bottom: 10px;
+  `;
+  
+  const SignupTitleStyle = styled.h1`
+    font-size: var(--xlarge-font);
+    display: flex;
+    justify-content: center;
+    margin: 50px 0px;
     letter-spacing: -1px;
-    color: rgb(51, 51, 51);
-`
-const Subdiv = styled.div `
-width: 640px;
-margin: 0px auto;
-`
-
-const Sub =styled.div `
-padding-bottom: 10px;
-    border-bottom: 2px solid rgb(51, 51, 51);
-    font-size: 12px;
-    color: rgb(102, 102, 102);
-    line-height: 17px;
-    text-align: right;
-
-& > span {
-    color: rgb(238, 106, 123);
-}
-`
-const IDdiv = styled.div`
-    display: inline-flex;
+  `;
+  
+  const SignupStarstyle = styled.span`
+    color: rgb(228, 56, 56);
+    margin: 1px;
+  `;
+  
+  const SignupEssentialStyle = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    font-size: var(--xsmall-font);
+    color: rgb(82, 82, 82);
+    margin: 10px 0px;
+  `;
+  
+  const SignupBox = styled.section`
+    width: 650px;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  `;
+  
+  const SignupForm = styled.form`
     width: 100%;
-    padding: 10px 20px;
-    & > label {
-        font-weight: 500;
-    color: rgb(51, 51, 51);
-    line-height: 20px;
-    width: 139px;
-    padding-top: 12px;
+  `;
+  
+  const SignupTable = styled.table`
+    width: 100%;
+  `;
+  
+  const SignupTh = styled.th`
+    padding: 13px;
+    text-align: start;
+    font-size: var(--small-font);
+    position: absolute;
+    transform: translateY(10px);
+  `;
+  
+  const SignupTd = styled.td`
+    width: 77%;
+    padding: 10px;
+  `;
+  
+  const SignupTr = styled.tr``;
+  
+  const SignupDupbtnStyle = styled.a`
+    display: inline-block;
+    width: 23%;
+    border: 1px solid var(--main-purple);
+    padding: 12px 0px;
+    border-radius: 4px;
+    color: var(--main-purple);
+    font-size: var(--small-font);
+    font-weight: bold;
+    text-align: center;
+  `;
+  
+  const SignupInputstyle = styled.input`
+    &[type="radio"] {
+      display: none;
     }
-
+    &[type="radio"] + label {
+      display: inline-block;
+      cursor: pointer;
+      line-height: 25px;
+      padding-left: 30px;
+      background: url("./image/ico_checkbox.svg") left/22px no-repeat;
+    }
+    &[type="radio"]:checked + label {
+      display: inline-block;
+      cursor: pointer;
+      line-height: 25px;
+      padding-left: 30px;
+      background: url("./image/ico_checkbox_checked.svg") left/22px no-repeat;
+    }
+  `;
+  
+  const SignupBtn = styled.button`
+    background-color: var(--main-purple);
+    margin: 50px;
+    color: white;
+    padding: 13px;
+    width: 15%;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+  `;
+  
+  const SignupCheckBox = styled.div`
+    width: 68%;
+    padding: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--small-font);
+  `;
+  
+  const SignupBirthDiv = styled.div`
+    width: 74%;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 4px;
+    padding: 3px 0px;
     & > input {
-    width: 333px;
-    height: 46px;
-    padding: 0px 11px 1px 15px;
-    border-radius: 4px;
-    border: 1px solid rgb(221, 221, 221);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    color: rgb(51, 51, 51);
-    outline: none;
-    box-sizing: border-box;
-
-    & > button {
-    width: 120px;
-    margin-left: 8px;
-    height: 44px;
-    border-radius: 3px;
-    display: block;
-    padding: 0px 10px;
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
-    height: 52px;
-    border-radius: 3px;
-    color: rgb(95, 0, 128);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
-    & > span {
-    font-weight: 500;
-    font-size: 14px;
+      width: 31%;
+      border: none;
+      font-size: var(--small-font);
+      text-align: center;
+      padding: 10px 0px;
     }
+    & > input:focus {
+      outline: none;
     }
-    }
-`
-const PWdiv= styled.div`
-    display: inline-flex;
-    width: 100%;
-    padding: 10px 20px;
-    & > label {
-        width: 139px;
-    padding-top: 12px;
-    }
-    & > input {
-        width: 333px;
-    height: 46px;
-    padding: 0px 11px 1px 15px;
-    border-radius: 4px;
-    border: 1px solid rgb(221, 221, 221);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    color: rgb(51, 51, 51);
-    outline: none;
-    box-sizing: border-box;
-    }
-`
-
-const PWCNdiv = styled.div`
-    display: inline-flex;
-    width: 100%;
-    padding: 10px 20px;
-
-& > label {
-    width: 139px;
-    padding-top: 12px;
-}
-
-& > input {
-    width: 333px;
-    height: 46px;
-    padding: 0px 11px 1px 15px;
-    border-radius: 4px;
-    border: 1px solid rgb(221, 221, 221);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    color: rgb(51, 51, 51);
-    outline: none;
-    box-sizing: border-box;
-}
-`
-const Namediv = styled.div`
-    display: inline-flex;
-    width: 100%;
-    padding: 10px 20px;
-
-& > label {
-    width: 139px;
-    padding-top: 12px;
-}
-
-& > input {
-    width: 333px;
-    height: 46px;
-    padding: 0px 11px 1px 15px;
-    border-radius: 4px;
-    border: 1px solid rgb(221, 221, 221);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    color: rgb(51, 51, 51);
-    outline: none;
-    box-sizing: border-box;
-}
-`
-const Emdiv = styled.div`
-   display: inline-flex;
-    width: 100%;
-    padding: 10px 20px;
-    & > label {
-        font-weight: 500;
-    color: rgb(51, 51, 51);
-    line-height: 20px;
-    width: 139px;
-    padding-top: 12px;
-    }
-
-    & > input {
-    width: 333px;
-    height: 46px;
-    padding: 0px 11px 1px 15px;
-    border-radius: 4px;
-    border: 1px solid rgb(221, 221, 221);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    color: rgb(51, 51, 51);
-    outline: none;
-    box-sizing: border-box;
-
-    & > button {
-    width: 120px;
-    margin-left: 8px;
-    height: 44px;
-    border-radius: 3px;
-    display: block;
-    padding: 0px 10px;
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
-    height: 52px;
-    border-radius: 3px;
-    color: rgb(95, 0, 128);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
-    & > span {
-    font-weight: 500;
-    font-size: 14px;
-    }
-    }
-    }
-`
-const Phonediv = styled.div`
-   display: inline-flex;
-    width: 100%;
-    padding: 10px 20px;
-    & > label {
-        font-weight: 500;
-    color: rgb(51, 51, 51);
-    line-height: 20px;
-    width: 139px;
-    padding-top: 12px;
-    }
-
-    & > input {
-    width: 333px;
-    height: 46px;
-    padding: 0px 11px 1px 15px;
-    border-radius: 4px;
-    border: 1px solid rgb(221, 221, 221);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    color: rgb(51, 51, 51);
-    outline: none;
-    box-sizing: border-box;
-
-    & > button {
-    width: 120px;
-    margin-left: 8px;
-    height: 44px;
-    border-radius: 3px;
-    display: block;
-    padding: 0px 10px;
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
-    height: 52px;
-    border-radius: 3px;
-    color: rgb(95, 0, 128);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
-    & > span {
-    font-weight: 500;
-    font-size: 14px;
-    }
-    }
-    }
-`
-const Maildiv = styled.div `
-display: inline-flex;
-width: 100%;
-padding: 10px 20px;
-& > label {
-    font-weight: 500;
-    color: rgb(51, 51, 51);
-    line-height: 20px;
-}
-& > span {
-    color: rgb(238, 106, 123);
-}
-& > div {
-    flex: 110%;
-    & > button {
-    display: block;
-    padding: 0px 10px;
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
-    height: 44px;
-    border-radius: 4px;
-    color: rgb(95, 0, 128);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
-}
-}
-& > button {
-    width:333px;
-    display: block;
-    padding: 0px 10px;
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
-    height: 44px;
-    border-radius: 4px;
-    color: rgb(95, 0, 128);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
-}
-& > span {
-    font-size: 14px;
-    font-weight: 500;
-}
-`
+  `;
