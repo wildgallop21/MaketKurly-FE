@@ -10,9 +10,9 @@ export default function Check() {
     "본인은 만 14세 이상입니다. (필수)",
   ];
 
-  //   const
 
-  //eachCheck4 는 특별함 all로 쓰이니까 주의할 것
+
+  //eachCheck4 전부임
   const [allCheck, setAllCheck] = useState(false);
   const [eachCheck, setEachCheck] = useState(false);
   const [eachCheck2, setEachCheck2] = useState(false);
