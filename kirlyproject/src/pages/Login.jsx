@@ -1,7 +1,33 @@
 import React from "react";
 import styled from "styled-components";
+import { loginUserThunk } from "../redux/modules/users";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+
+
+
 
 const Login = () => {
+    
+  const dispatch = useDispatch();
+  const [user_ID, setuser_ID] = useState({
+    user_ID: "",
+  });
+  const [user_PW, setuser_PW] = useState({
+    user_PW: "",
+  });
+
+  const loginDispatch = () => {
+    dispatch(
+      loginUserThunk({
+        username: user_ID,
+        password: user_PW,
+      })
+    );
+  };
+
+  console.log(user_ID,user_PW);
+
     return (
         <LoginContainer>
             <LoginTitle>로그인</LoginTitle>
@@ -10,12 +36,18 @@ const Login = () => {
                     <input 
                     name="id"
                     type="text"
-                    placeholder="아이디를 입력해주세요" />
+                    placeholder="아이디를 입력해주세요"
+                    onChange={(ev) => {
+                        setuser_ID(ev.target.value);
+                      }} />
 
                     <input 
                     name="password"
                     type="password"
-                    placeholder="비밀번호를 입력해주세요"/>
+                    placeholder="비밀번호를 입력해주세요"
+                    onChange={(ev) => {
+                        setuser_PW(ev.target.value);
+                      }}/>
 
                 </Inputdiv>
                 <Finddiv>
@@ -25,7 +57,7 @@ const Login = () => {
                 </Finddiv>
 
                 <div>
-                    <Loginbutton>
+                    <Loginbutton onClick={loginDispatch}>
                         <span>로그인</span>
                     </Loginbutton>
                     <Signupbutton>
