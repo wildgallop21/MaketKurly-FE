@@ -34,7 +34,7 @@ export default function MainPage() {
             {/* <SlIMG1
         src="https://pixabay.com/images/id-494706/"></SlIMG1> */}
             <img
-              class="main-banner-image"
+              className="main-banner-image"
               src="https://product-image.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/bb6b5057-b7a4-4870-b4de-de192729c085.jpg"
               alt="main-banner-596"
               style={{
@@ -42,7 +42,7 @@ export default function MainPage() {
               }
             ></img>
                         <img
-              class="main-banner-image"
+              className="main-banner-image"
               src="https://product-image.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/bb6b5057-b7a4-4870-b4de-de192729c085.jpg"
               alt="main-banner-596"
               style={{
@@ -52,7 +52,7 @@ export default function MainPage() {
             ></img>
 
 <img
-              class="main-banner-image"
+              className="main-banner-image"
               src="https://product-image.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/bb6b5057-b7a4-4870-b4de-de192729c085.jpg"
               alt="main-banner-596"
               style={{
@@ -64,14 +64,14 @@ export default function MainPage() {
           </SwiperSlide>
           <SwiperSlide>
             <img
-              class="main-banner-image"
+              className="main-banner-image"
               src="https://product-image.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/d5dcd4e4-9a54-427e-9282-e16ae5fc911e.jpg"
               alt="main-banner-601"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              class="main-banner-image"
+              className="main-banner-image"
               src="https://product-image.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/ca8b5770-3919-48e5-b14b-66a4d0714d30.jpg"
               alt="main-banner-592"
             />
