@@ -1,4 +1,4 @@
-import React , {useState}from "react";
+import React , {useState, useCallback}from "react";
 import styled from "styled-components";
 import Input from "../elements/Input";
 import More from "../elements/More";
@@ -10,12 +10,12 @@ import Check from "../elements/Check";
 
 const Signup=()=>{
 
-    //컬러값 가져다가 쓰기 (기본,성공,실패 시 각각..)
-    const color = {
-        default: "rgb(82,82,82)",
-        success: "rgb(51, 141, 39)",
-        fail: "rgb(228, 56, 56)",
-    };
+  //컬러값 가져다가 쓰기 (기본,성공,실패 시 각각..)
+  const color = {
+      default: "rgb(82,82,82)",
+      success: "rgb(51, 141, 39)",
+      fail: "rgb(228, 56, 56)",
+  };
 
 
 //이름, 아이디 받기
@@ -30,9 +30,9 @@ const Signup=()=>{
     const [pwColor3, setPwColor3] = useState("");
     const [pwcColor, setPwcColor] = useState("");
 
-    
 
 //포커스 했을 때 - 컬러값도 설정해주기
+
     const [idFocus, setIdFocus] = useState(false);
     const [passwordFocus, setPasswordFocus] = useState(false);
     const [passwordCheckFocus, setPassworcCheckFocus] = useState(false);
@@ -56,6 +56,31 @@ const Signup=()=>{
         setEventClick(true);
       }
 
+      //인풋창 밑 메세지 상태 표기 
+  const [idMessge, setIdMessage] = useState("6자 이상의 영문 혹은 영문과 숫자를 조합");
+  const [passwordMessage1, setPasswordMessage1] = useState("최소 10자 이상 입력");
+  const [passwordMessage2, setPasswordMessage2] = useState("영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합")
+  const [passwordMessage3, setPasswordMessage3] = useState("동일한 비밀번호를 입력해주세요.")
+    
+
+//아이디 유효성 검사 
+      const onChangeId= useCallback((e)=>{
+        const regId = /^[A-Za-z0-9]{6,16}$/;
+        const currentId = e.target.value;
+        setId(currentId);
+
+        //충족 했을때 안했을때 메세지 컬러도 변경해주기
+        if (!regId.test(currentId)) {
+        setIdMessage("✕ 6자 이상의 영문 혹은 영문과 숫자를 조합");
+        setIdColor(color.fail);
+        } else {
+          setIdMessage("✓ 6자 이상의 영문 혹은 영문과 숫자를 조합");
+          setIdColor(color.success);
+        }
+  
+      },[]);
+
+
     return (
         <SignupMainStyle>
         <SignupContainer>
@@ -77,6 +102,7 @@ const Signup=()=>{
                       <Input
                         value={id}
                         onFocus={onIdMouseFocus}
+                        onChang={onChangeId}
                         type="text"
                         placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
                       />
