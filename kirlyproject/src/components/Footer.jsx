@@ -52,7 +52,7 @@ const Footer = () => {
         </FooterTop2>
       </FooterTop>
       <FooterMiddle>
-        <FooterMiddle1 src="https://res.kurly.com/pc/ico/2208/logo_isms.svg" alt="isms 로고" class="css-1262i6n e57xuci1">
+        <FooterMiddle1 src="https://res.kurly.com/pc/ico/2208/logo_isms.svg" alt="isms 로고" className="css-1262i6n e57xuci1">
 
         </FooterMiddle1>
         <FooterMiddle2>
@@ -60,21 +60,21 @@ const Footer = () => {
           (심사받지않은 물리적 인프라 제외)<br/>
           [유효기간] 2022.01.19~2015.01.18<br/>
         </FooterMiddle2>
-        <FooterMiddle1 src="https://res.kurly.com/pc/ico/2208/logo_privacy.svg" alt="eprivacy plus 로고" class="css-1262i6n e57xuci1">
+        <FooterMiddle1 src="https://res.kurly.com/pc/ico/2208/logo_privacy.svg" alt="eprivacy plus 로고" className="css-1262i6n e57xuci1">
 
         </FooterMiddle1>
         <FooterMiddle2>
           개인정보보호 우수웹사이트 <br/>
           개인정보처리시스템인증(ePRIVACY PLUS)<br/>
         </FooterMiddle2>
-        <FooterMiddle1 src="https://res.kurly.com/pc/ico/2208/logo_tosspayments.svg" alt="payments 로고" class="css-as7ifw e57xuci1">
+        <FooterMiddle1 src="https://res.kurly.com/pc/ico/2208/logo_tosspayments.svg" alt="payments 로고" className="css-as7ifw e57xuci1">
 
         </FooterMiddle1>
         <FooterMiddle2>
           토스페이먼츠 구매안전(에스크로)<br/>
           서비스를 이용하실 수 있습니다.<br/>
         </FooterMiddle2>
-        <FooterMiddle1 src="https://res.kurly.com/pc/ico/2208/logo_wooriBank.svg" alt="우리은행 로고" class="css-1262i6n e57xuci1">
+        <FooterMiddle1 src="https://res.kurly.com/pc/ico/2208/logo_wooriBank.svg" alt="우리은행 로고" className="css-1262i6n e57xuci1">
 
         </FooterMiddle1>
 
