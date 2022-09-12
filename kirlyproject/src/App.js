@@ -1,12 +1,19 @@
-import "./App.css";
-import Detail from "./pages/Detail";
-import Signup from "./pages/Signup";
 
+import logo from './logo.svg';
+import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Cart from './pages/Cart';
+import MainPage from './pages/MainPage';
 function App() {
   return (
-    <div className="App">
-      <Detail />
-      {/* <Signup /> */}
+    <div>
+      <Header />
+      {/* <Cart/> */}
+      <MainPage/>
+      <Footer />
+      {/* <Detail/> */}
+
     </div>
   );
 }
