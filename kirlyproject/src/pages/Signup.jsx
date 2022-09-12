@@ -10,13 +10,15 @@ import Check from "../elements/Check";
 
 const Signup=()=>{
 
-    //컬러값 가져다가 쓰기 기본,성공,실패 시 각각..
+    //컬러값 가져다가 쓰기 (기본,성공,실패 시 각각..)
     const color = {
         default: "rgb(82,82,82)",
         success: "rgb(51, 141, 39)",
         fail: "rgb(228, 56, 56)",
     };
-//이름 아이디 받기
+
+
+//이름, 아이디 받기
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
     const [passwordCheck, setPasswordCheck] = useState("");
@@ -27,6 +29,8 @@ const Signup=()=>{
     const [pwColor2, setPwColor2] = useState("");
     const [pwColor3, setPwColor3] = useState("");
     const [pwcColor, setPwcColor] = useState("");
+
+    
 
 //포커스 했을 때 - 컬러값도 설정해주기
     const [idFocus, setIdFocus] = useState(false);
