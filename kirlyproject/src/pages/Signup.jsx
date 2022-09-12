@@ -1,4 +1,5 @@
-import React , {useState, useCallback}from "react";
+import React , {useState, useCallback, useSelector}from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Input from "../elements/Input";
 import More from "../elements/More";
@@ -9,6 +10,8 @@ import Check from "../elements/Check";
 
 
 const Signup=()=>{
+
+  const navigate = useNavigate();
 
   //컬러값 가져다가 쓰기 (기본,성공,실패 시 각각..)
   const color = {
@@ -81,6 +84,59 @@ const Signup=()=>{
       },[]);
 
 
+      //비밀번호 유효성 검사 함수(글자 컬러 변경도..)
+      const onChangePassword = useCallback((e) => {
+        const regPw = /^[a-zA-Z0-9!@#$%^&*()?_~]{10,20}$/;
+        const currentPw = e.target.value;
+        setPassword(currentPw);
+        
+        //조건1-->10자 이상
+        if (!regPw.test(currentPw)){
+          setPasswordMessage1("✕ 최소 10자 이상 입력")
+          setPwColor1(color.fail)
+        } else {
+          setPasswordMessage1("✓ 10자 이상 입력")
+          setPwColor1(color.success)
+        }
+
+        //조건2-->영문+숫자+특수문자 2개이상 조합
+
+        //조건3-->비밀번호 확인
+        if(currentPw != passwordCheck){
+          setPasswordMessage3("✕ 동일한 비밀번호를 입력해주세요.");
+          setPwcColor(color.fail);
+        }else{
+          setPasswordMessage3("✓ 동일한 비밀번호를 입력해주세요.");
+          setPwcColor(color.success);
+        }
+      },[password])
+
+      const onChangePWcheck = useCallback((e)=>{
+        const currentPWC = e.target.value;
+        setPasswordCheck(currentPWC);
+        if (password != currentPWC){
+          setPasswordMessage3("✕ 동일한 비밀번호를 입력해주세요.")
+          setPwcColor(color.fail);
+        }else{
+          setPasswordMessage3("✓ 동일한 비밀번호를 입력해주세요.");
+          setPwcColor(color.success);
+      }},[password])
+
+      // const submitHandler = async (e) => {
+      //   e.preventDefault();
+      //   try {
+      //     await axios.post(
+      //       "member/signup",
+      //     "http://"
+      //     {
+      //       member_id: 
+      //     }
+      //     )
+
+      //   }
+      // }
+//  const user = useSelector((state)=>state.)
+
     return (
         <SignupMainStyle>
         <SignupContainer>
@@ -102,7 +158,7 @@ const Signup=()=>{
                       <Input
                         value={id}
                         onFocus={onIdMouseFocus}
-                        onChang={onChangeId}
+                        onChange={onChangeId}
                         type="text"
                         placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
                       />
@@ -118,6 +174,7 @@ const Signup=()=>{
                     <SignupTd>
                       <Input
                         onFocus={onPasswordMouseFocus}
+                        onChange={onChangePassword}
                         type="password"
                         placeholder="비밀번호를 입력해주세요"
                       />
@@ -138,6 +195,7 @@ const Signup=()=>{
                     <SignupTd>
                       <Input
                         onFocus={onPasswordCheckMouseFocus}
+                        onChange={onChangePWcheck}
                         type="password"
                         placeholder="비밀번호를 한번 더 입력해주세요"
                       />
@@ -432,4 +490,3 @@ const Signup=()=>{
       outline: none;
     }
   `;
-
