@@ -1,4 +1,5 @@
 import React , {useState, useCallback}from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Input from "../elements/Input";
 import More from "../elements/More";
@@ -9,6 +10,8 @@ import Check from "../elements/Check";
 
 
 const Signup=()=>{
+
+  const navigate = useNavigate();
 
   //컬러값 가져다가 쓰기 (기본,성공,실패 시 각각..)
   const color = {
@@ -79,6 +82,35 @@ const Signup=()=>{
         }
   
       },[]);
+
+
+      //비밀번호 유효성 검사 함수(글자 컬러 변경도..)
+      const onChangePassword = useCallback((e) => {
+        const regPw = /^[a-zA-Z0-9!@#$%^&*()?_~]{10,20}$/;
+        const currentPw = e.target.value;
+        setPassword(currentPw);
+        
+        //조건1-->10자 이상
+        if (!regPw.test(currentPw)){
+          setPasswordMessage1("✕ 최소 10자 이상 입력")
+          setPwColor1(color.fail)
+        } else {
+          setPasswordMessage1("✓ 10자 이상 입력")
+          setPwColor1(color.success)
+        }
+
+        //조건2-->영문+숫자+특수문자 2개이상 조합
+
+        //조건3-->비밀번호 확인
+        if(currentPw != passwordCheck){
+          setPasswordMessage3("✕ 동일한 비밀번호를 입력해주세요.");
+          setPwcColor(color.fail);
+        }else{
+          setPasswordMessage3("✓ 동일한 비밀번호를 입력해주세요.");
+          setPwcColor(color.success);
+        }
+      },
+      [password])
 
 
     return (
