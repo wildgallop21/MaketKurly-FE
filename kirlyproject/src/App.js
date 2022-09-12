@@ -1,25 +1,7 @@
-
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Cart from './pages/Cart';
-import MainPage from './pages/MainPage';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Router from "./shared/globalRouter";
 
 function App() {
-  return (
-    <div>
-      <Header />
-      {/* <Cart/> */}
-      {/* <MainPage/> */}
-      <Login/>
-      <Footer />
-      {/* <Detail/> */}
-
-    </div>
-  );
+  return <Router />;
 }
 
 export default App;

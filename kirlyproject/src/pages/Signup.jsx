@@ -1,4 +1,4 @@
-import React , {useState, useCallback}from "react";
+import React , {useState, useCallback, useSelector}from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Input from "../elements/Input";
@@ -109,9 +109,33 @@ const Signup=()=>{
           setPasswordMessage3("✓ 동일한 비밀번호를 입력해주세요.");
           setPwcColor(color.success);
         }
-      },
-      [password])
+      },[password])
 
+      const onChangePWcheck = useCallback((e)=>{
+        const currentPWC = e.target.value;
+        setPasswordCheck(currentPWC);
+        if (password != currentPWC){
+          setPasswordMessage3("✕ 동일한 비밀번호를 입력해주세요.")
+          setPwcColor(color.fail);
+        }else{
+          setPasswordMessage3("✓ 동일한 비밀번호를 입력해주세요.");
+          setPwcColor(color.success);
+      }},[password])
+
+      // const submitHandler = async (e) => {
+      //   e.preventDefault();
+      //   try {
+      //     await axios.post(
+      //       "member/signup",
+      //     "http://"
+      //     {
+      //       member_id: 
+      //     }
+      //     )
+
+      //   }
+      // }
+//  const user = useSelector((state)=>state.)
 
     return (
         <SignupMainStyle>
@@ -134,7 +158,7 @@ const Signup=()=>{
                       <Input
                         value={id}
                         onFocus={onIdMouseFocus}
-                        onChang={onChangeId}
+                        onChange={onChangeId}
                         type="text"
                         placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합"
                       />
@@ -150,6 +174,7 @@ const Signup=()=>{
                     <SignupTd>
                       <Input
                         onFocus={onPasswordMouseFocus}
+                        onChange={onChangePassword}
                         type="password"
                         placeholder="비밀번호를 입력해주세요"
                       />
@@ -170,6 +195,7 @@ const Signup=()=>{
                     <SignupTd>
                       <Input
                         onFocus={onPasswordCheckMouseFocus}
+                        onChange={onChangePWcheck}
                         type="password"
                         placeholder="비밀번호를 한번 더 입력해주세요"
                       />
@@ -464,4 +490,3 @@ const Signup=()=>{
       outline: none;
     }
   `;
-

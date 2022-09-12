@@ -5,18 +5,15 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 
 const Router = () => {
-  return(
+  return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<MainPage />} />
-
-      <Route path="/login" element={<Login />} />
-      {/* <Route path="/signup" element={<SignUp />} /> */}
-      <Route path="/cart" element={<Cart />} />
-
-
-    </Routes>
-  </BrowserRouter>
-  )
-}
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 export default Router;
