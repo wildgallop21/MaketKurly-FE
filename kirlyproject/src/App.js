@@ -11,6 +11,7 @@ function App() {
       {/* <Cart/> */}
       <MainPage/>
       <Footer />
+      {/* <Detail/> */}
 
     </div>
   );
