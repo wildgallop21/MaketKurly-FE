@@ -179,7 +179,7 @@ const InformationWrap = styled.div`
     padding: 13px 0;
     border-bottom: 1px solid #f4f4f4;
   }
-  .tit {
+  .title {
     float: left;
     width: 128px;
     font-size: 14px;
@@ -205,7 +205,7 @@ const Boxwrap = styled.div`
   justify-content: flex-start;
   align-items: center;
   align-content: stretch;
-  .strong {
+  & > strong {
     float: left;
     width: 128px;
     padding-top: 9px;
