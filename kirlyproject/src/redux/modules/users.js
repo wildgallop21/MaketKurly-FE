@@ -5,7 +5,19 @@ import axios from "axios";
 const API_USERS_URL = "http://localhost:3001/users";
 
 const initialState = {
-  users: [],
+  users: [
+    {
+      member_id: "",
+      password: "",
+      name:"",
+      email:"",
+      phone_number:"",
+      address: "",
+      gender:"",
+      birth:"",
+      policy:""
+    }
+  ],
   isLoading: false,
   error: null,
 };

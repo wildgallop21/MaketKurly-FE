@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Input from "../elements/Input";
 import More from "../elements/More";
 import Check from "../elements/Check";
+
 import { createUserThunk } from "../redux/modules/users";
 import { useDispatch } from "react-redux";
 
@@ -103,7 +104,23 @@ const Signup=()=>{
         }
 
         //조건2-->영문+숫자+특수문자 2개이상 조합
+        //--한글자라도 입력/ 입력10자 이상 했을때
+        let chk = 0;
+      if (currentPw.search(/[0-9]/g) != -1) chk++;
+      if (currentPw.search(/[a-z]/gi) != -1) chk++;
+      if (currentPw.search(/[!@#$%^&*()?_~]/g) != -1) chk++;
 
+      if (chk < 2) {
+        setPasswordMessage2(
+          "✕ 영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합"
+        );
+        setPwColor2(color.fail);
+      } else {
+        setPasswordMessage2(
+          "✓ 영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합"
+        );
+        setPwColor2(color.success);
+      }
         //조건3-->비밀번호 확인
         if(currentPw != passwordCheck){
           setPasswordMessage3("✕ 동일한 비밀번호를 입력해주세요.");
@@ -129,7 +146,6 @@ const Signup=()=>{
       //   e.preventDefault();
       //   try {
       //     await axios.post(
-      //       "member/signup",
       //     "http://"
       //     {
       //       member_id: 
@@ -138,6 +154,7 @@ const Signup=()=>{
 
       //   }
       // }
+      
 //  const user = useSelector((state)=>state.)
 const signupDispatch = () => {
   dispatch(
@@ -148,6 +165,7 @@ const signupDispatch = () => {
   );
 };
 console.log(id,password);
+
 
 
     return (
