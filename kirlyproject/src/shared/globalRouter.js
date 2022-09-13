@@ -3,7 +3,7 @@ import Cart from "../pages/Cart";
 import MainPage from "../pages/MainPage";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-
+import Post from "../pages/Post";
 const Router = () => {
   return (
     <BrowserRouter>
@@ -12,6 +12,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/post" element={<Post />} />
       </Routes>
     </BrowserRouter>
   );

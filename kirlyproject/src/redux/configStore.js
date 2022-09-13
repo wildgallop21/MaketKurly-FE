@@ -7,7 +7,6 @@ import posts from "./modules/posts";
 const store = configureStore({
   reducer: {
     users,
-
     posts,
 
   },

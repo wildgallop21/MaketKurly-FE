@@ -146,7 +146,9 @@ const Signup=()=>{
 const signupDispatch = () => {
   dispatch(
     createUserThunk({
+
       memberId: memberId,
+
       password: password,
     })
   );
