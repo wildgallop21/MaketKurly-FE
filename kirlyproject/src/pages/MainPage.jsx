@@ -7,14 +7,15 @@ import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
+import Cardlist from"../components/CardList"
 
 SwiperCore.use([Navigation, Pagination]);
 
 export default function MainPage() {
   return (
     <div>
-      <Card/>
+      {/* <Card/> */}
+    <Cardlist/>
       <SwipeBox>
         <Swiper
           style={{

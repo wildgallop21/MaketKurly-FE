@@ -48,10 +48,11 @@ export const getItemThunk = createAsyncThunk(
 export const getPosts = createAsyncThunk(
   "GET_ALL_POSTS",
   async (payload, thunkAPI) => {
+    console.log("test시작")
     try {
       // const { data } = await axios.get(teamBaseLogedURL);
       const { data } = await axios.get("http://localhost:3001/posts");
-      console.log("test",data);
+      console.log("test");
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

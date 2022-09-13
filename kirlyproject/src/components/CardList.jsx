@@ -14,8 +14,19 @@ import Card from "./Card";
 import { Pagination, Navigation } from "swiper";
 
 const CardList=()=>{
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const all_list = useSelector((state) => state.post.post)
+
+  const {posts} = useSelector((state) => state.posts)
+  console.log(posts)
+
+  useEffect(() => {
+ 
+    dispatch(getPosts())
+    console.log(getPosts())
+  }, []);
+
 
 
   return(
@@ -40,8 +51,8 @@ const CardList=()=>{
         >
                 <DivSt>
 
-          {all_list.map((item, idx) => (
-          <SwiperSlide key={item.id}><Card item={item}/></SwiperSlide>
+          {posts.map((posts, idx) => (
+          <SwiperSlide key={posts.id}><Card posts={posts}/></SwiperSlide>
           ))}
                   </DivSt>
                   </Swiper>

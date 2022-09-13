@@ -11,20 +11,22 @@ import { createUserThunk } from "../redux/modules/users";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-const Card=()=>{
-
+// const Card=(props)=>{
+  const Card=({posts})=>{
+    // const {itemName} = posts;
+    console.log(posts)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+          // console.log({props})
   useEffect(() => {
  
     dispatch(getPosts())
-    // console.log(getPosts())
+    console.log(getPosts())
   }, [dispatch]);
   // }, []);
   const item_list = useSelector((state) => state.posts)
-  console.log(item_list)
-
+  // console.log(item_list)
+  // console.log(props)
     return(
     <>
     <Stdiv>
@@ -36,10 +38,14 @@ const Card=()=>{
         alt="img"
         />
         </ImageSt>
-        <h3   styled={{marginLeft:"4px", fontsize: "16px"}}>
-          {item_list.posts[0].itemName}
+        <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
+          {/* {item_list.posts[1].itemName} */}
+          {posts.itemName}
+
           {/* optional chaning */}
           </h3>
+
+
         <span styled={{marginLeft:"4px", fontsize: "16px", color:"rgb(250, 98, 47)"}}>31%</span>
         <span styled={{ marginLeft: "4px", fontSize: "16px" }}>8,800원</span>
         <BeforeDiscount>12,000원</BeforeDiscount>
