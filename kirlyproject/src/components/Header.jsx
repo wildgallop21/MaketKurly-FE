@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { location } from "react-icons/fa";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCommentDots, faBell } from "@fortawesome/free-regular-svg-icons";
-import {
-  faCalendarCheck,
-  faCaretRight,
-} from "@fortawesome/free-solid-svg-icons";
-import { faApple } from "@fortawesome/free-brands-svg-icons";
+// import { location } from "react-icons/fa";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faCommentDots, faBell } from "@fortawesome/free-regular-svg-icons";
+// import {
+//   faCalendarCheck,
+//   faCaretRight,
+// } from "@fortawesome/free-solid-svg-icons";
+// import { faApple } from "@fortawesome/free-brands-svg-icons";
 
 const Header = () => {
   return (
