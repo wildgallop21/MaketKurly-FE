@@ -14,8 +14,8 @@ export const createUserThunk = createAsyncThunk(
   "users/createUserThunk",
   async (newUser, thunkAPI) => {
     try {
-      // const data = await axios.post("http://localhost:3001/users", newUser);
-      const data = await axios.post("http://13.125.246.47:8080/api/member/signup", newUser);
+      const data = await axios.post("http://localhost:3001/users", newUser);
+      // const data = await axios.post("http://13.125.246.47:8080/api/member/signup", newUser);
       console.log(data)
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
@@ -37,11 +37,11 @@ export const loginUserThunk = createAsyncThunk(
             // if (response.data.success) {
               localStorage.setItem(
                 "accessToken",
-                response.headers["authorization"]
+                response.headers["access_token"]
               );
               localStorage.setItem(
                 "refreshToken",
-                response.headers["refresh-token"]
+                response.headers["refresh_token"]
               );
             // } else if (response.status !== 200) {
             //   alert("서버와 연결에 실패했습니다.");

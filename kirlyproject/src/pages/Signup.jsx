@@ -4,12 +4,15 @@ import styled from "styled-components";
 import Input from "../elements/Input";
 import More from "../elements/More";
 import Check from "../elements/Check";
+import { createUserThunk } from "../redux/modules/users";
+import { useDispatch } from "react-redux";
 
 
 
 
 
 const Signup=()=>{
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -136,6 +139,16 @@ const Signup=()=>{
       //   }
       // }
 //  const user = useSelector((state)=>state.)
+const signupDispatch = () => {
+  dispatch(
+    createUserThunk({
+      username: id,
+      password: password,
+    })
+  );
+};
+console.log(id,password);
+
 
     return (
         <SignupMainStyle>
@@ -340,7 +353,7 @@ const Signup=()=>{
           <Check></Check>
         </SignupContainer>
   
-        <SignupBtn type="submit">
+        <SignupBtn type="submit" onClick={signupDispatch}>
           가입하기
         </SignupBtn>
       </SignupMainStyle>
