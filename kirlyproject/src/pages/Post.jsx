@@ -26,8 +26,9 @@ const Post=()=>{
 
 
   useEffect(() => {
+ 
+    dispatch(getPosts())
     console.log(getPosts())
-
   }, [dispatch]);
 
   const postDispatch = () => {

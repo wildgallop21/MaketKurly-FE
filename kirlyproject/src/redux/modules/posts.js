@@ -35,7 +35,7 @@ export const getItemThunk = createAsyncThunk(
   "posts/getItemThunk",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.post("http://localhost:3001/posts", payload);
+      const { data } = await axios.get("http://localhost:3001/posts", payload);
       console.log(data);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -51,8 +51,8 @@ export const getPosts = createAsyncThunk(
     try {
       // const { data } = await axios.get(teamBaseLogedURL);
       const { data } = await axios.get("http://localhost:3001/posts");
-      console.log(data);
-      return thunkAPI.fulfillWithValue(data.data);
+      console.log("test",data);
+      return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
