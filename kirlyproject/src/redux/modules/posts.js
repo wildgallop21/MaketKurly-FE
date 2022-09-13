@@ -5,7 +5,7 @@ import axios from "axios";
 // data, isLoading, error로 상태관리
 const initialState = {
   posts: [{
-    item_Name: "testname",
+    itemName: "testname",
     item_Price: "testprice"
   }],
   isLoading: false,

@@ -56,7 +56,7 @@ const Post=()=>{
                     onChange={(ev) => {
                         setItemName(ev.target.value);
                       }} />
-      <div>가격</div> <br/>
+      <div>{item_list.posts[1].itemName}</div> <br/>
       <div>이미지</div> <br/>
       <div>재고현황???</div> <br/>
       <div>

@@ -2,17 +2,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import React from "react";
 import styled from "styled-components";
-
+import Card from "../components/Card";
 import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
 
 SwiperCore.use([Navigation, Pagination]);
 
 export default function MainPage() {
   return (
     <div>
+      <Card/>
       <SwipeBox>
         <Swiper
           style={{
