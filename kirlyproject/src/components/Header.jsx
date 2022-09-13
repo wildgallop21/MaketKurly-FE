@@ -1,4 +1,6 @@
+import axios from "axios";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -13,6 +15,11 @@ import styled from "styled-components";
 
 const Header = () => {
   const navigate = useNavigate();
+
+
+
+
+
   return (
     <div>
       <Container>
@@ -41,12 +48,7 @@ const Header = () => {
               <IconLocation></IconLocation>
               <IconHeart></IconHeart>
               <IconBasket></IconBasket>
-              {/* <FontAwesomeIcon icon="fa-solid fa-location-dot" />
-            <FontAwesomeIcon icon={faApple} /> */}
             </IconBox>
-
-            {/* <TextPurple>샛별/낮</TextPurple>
-        <Text>배송안내</Text> */}
           </Box>
         </HeaderContainer>
         <HeaderBottom>
