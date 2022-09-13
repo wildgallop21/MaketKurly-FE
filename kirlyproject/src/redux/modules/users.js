@@ -26,8 +26,9 @@ export const createUserThunk = createAsyncThunk(
   "users/createUserThunk",
   async (newUser, thunkAPI) => {
     try {
-      const data = await axios.post("http://localhost:3001/users", newUser);
-      // const data = await axios.post("http://13.125.246.47:8080/api/member/signup", newUser);
+      // const data = await axios.post("http://localhost:3001/users", newUser);
+      // const data = await axios.post("http://15.164.170.68/member/signup", newUser);
+      const data = await axios.post('http://52.79.58.138/member/signup', newUser)
       console.log(data)
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
@@ -44,16 +45,27 @@ export const loginUserThunk = createAsyncThunk(
       // const data =
         await // axios.post('http://localhost:3001/user/login', userInfo)
         axios
-        .post('http://localhost:3001/users', userInfo)
+        // .post('http://localhost:3001/users', userInfo)
+        // .post('http://15.164.170.68/api/member/login', userInfo)
+        .post('http://52.79.58.138/member/login', userInfo)
+        
           .then((response) => {
             // if (response.data.success) {
+            //  const aaa = response.headers["Authorization"].replace("Bearer ", "")
               localStorage.setItem(
-                "accessToken",
-                response.headers["access_token"]
+                //splice
+                // "Authoriazation",
+                // response.headers["accesstoken"]
+                "Authoriazation",
+                response.headers["Authorization"]
+                // `Bearer ${response.headers.Authorization}`
+                // aaa
               );
+              console.log(response) 
+
               localStorage.setItem(
-                "refreshToken",
-                response.headers["refresh_token"]
+                "Refresh-Token",
+                response.headers["refresh-token"]
               );
             // } else if (response.status !== 200) {
             //   alert("서버와 연결에 실패했습니다.");
@@ -79,6 +91,7 @@ const usersSlice = createSlice({
     },
   },
 });
+
 
 export const {} = usersSlice.actions;
 export default usersSlice.reducer;

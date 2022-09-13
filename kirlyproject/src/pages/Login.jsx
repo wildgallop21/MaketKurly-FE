@@ -20,7 +20,7 @@ const Login = () => {
   const loginDispatch = () => {
     dispatch(
       loginUserThunk({
-        username: user_ID,
+        memberId: user_ID,
         password: user_PW,
       })
     );

@@ -1,0 +1,30 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "item_Name": "json-server",
+      "url" : "url"
+    },
+    {
+      "id": 2
+    },
+    {
+      "itemName": "asdfsdf",
+      "id": 3
+    },
+    {
+      "itemName": "가지",
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
