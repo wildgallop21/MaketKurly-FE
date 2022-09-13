@@ -26,8 +26,8 @@ export const createUserThunk = createAsyncThunk(
   "users/createUserThunk",
   async (newUser, thunkAPI) => {
     try {
-      const data = await axios.post("http://localhost:3001/users", newUser);
-      // const data = await axios.post("http://13.125.246.47:8080/api/member/signup", newUser);
+      // const data = await axios.post("http://localhost:3001/users", newUser);
+      const data = await axios.post("http://15.164.170.68/member/signup", newUser);
       console.log(data)
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
@@ -44,7 +44,8 @@ export const loginUserThunk = createAsyncThunk(
       // const data =
         await // axios.post('http://localhost:3001/user/login', userInfo)
         axios
-        .post('http://localhost:3001/users', userInfo)
+        // .post('http://localhost:3001/users', userInfo)
+        .post('http://15.164.170.68/member/login', userInfo)
           .then((response) => {
             // if (response.data.success) {
               localStorage.setItem(

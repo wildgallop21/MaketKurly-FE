@@ -6,6 +6,54 @@
       "author": "typicode"
     }
   ],
+  "users": [
+    {
+      "id": "1pZ3UlCo1RSbpdoVU1gNG",
+      "username": "est",
+      "password": "asdfa",
+      "passwordConfirm": "sdfsdf"
+    },
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "username": "123",
+      "password": "123",
+      "id": "DH27XFr"
+    },
+    {
+      "username": "123",
+      "password": "123",
+      "id": "iwhVPLv"
+    },
+    {
+      "username": "123",
+      "password": "123",
+      "id": "vcBgggb"
+    },
+    {
+      "username": "123",
+      "password": "123",
+      "id": "KsdD11h"
+    },
+    {
+      "username": "123",
+      "password": "asd",
+      "id": "grXdaUQ"
+    },
+    {
+      "username": "test1234",
+      "password": "test1234!Q",
+      "id": "9q4AE_R"
+    },
+    {
+      "username": "test123455",
+      "password": "teset1234!Q",
+      "id": "WT0mo7B"
+    }
+  ],
   "comments": [
     {
       "id": 1,
@@ -16,5 +64,4 @@
   "profile": {
     "name": "typicode"
   }
-
 }
