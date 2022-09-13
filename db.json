@@ -2,8 +2,15 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "itemName": "test"
+    },
+    {
+      "itemName": "사과",
+      "id": 2
+    },
+    {
+      "itemName": "감",
+      "id": 3
     }
   ],
   "users": [

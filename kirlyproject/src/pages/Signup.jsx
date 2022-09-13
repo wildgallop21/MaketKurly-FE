@@ -159,7 +159,7 @@ const Signup=()=>{
 const signupDispatch = () => {
   dispatch(
     createUserThunk({
-      username: id,
+      memberId: id,
       password: password,
     })
   );

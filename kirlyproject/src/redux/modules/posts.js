@@ -4,7 +4,10 @@ import axios from "axios";
 /* InitialState */
 // data, isLoading, error로 상태관리
 const initialState = {
-  posts: [],
+  posts: [{
+    item_Name: "testname",
+    item_Price: "testprice"
+  }],
   isLoading: false,
   error: null,
 };
@@ -15,11 +18,11 @@ const teamBaseLogedURL = "http://13.125.246.47:8080/api/post";
 const newBaseURL = "http://52.79.235.129/api/post";
 /* Thunk function */
 // [GET - 데이터 전체 조회]
-export const getPosts = createAsyncThunk(
-  "GET_ALL_POSTS",
+export const postItemThunk = createAsyncThunk(
+  "posts/postItemThunk",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.get(teamBaseLogedURL);
+      const { data } = await axios.post("http://localhost:3001/posts", payload);
       console.log(data);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -27,6 +30,36 @@ export const getPosts = createAsyncThunk(
     }
   }
 );
+
+export const getItemThunk = createAsyncThunk(
+  "posts/getItemThunk",
+  async (payload, thunkAPI) => {
+    try {
+      const { data } = await axios.post("http://localhost:3001/posts", payload);
+      console.log(data);
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+
+export const getPosts = createAsyncThunk(
+  "GET_ALL_POSTS",
+  async (payload, thunkAPI) => {
+    try {
+      // const { data } = await axios.get(teamBaseLogedURL);
+      const { data } = await axios.get("http://localhost:3001/posts");
+      console.log(data);
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+
 
 // [GET - 특정ID를 가진 데이터만 조회]
 export const eachPosts = createAsyncThunk(
