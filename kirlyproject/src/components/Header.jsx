@@ -1,5 +1,9 @@
+import axios from "axios";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
 // import { location } from "react-icons/fa";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCommentDots, faBell } from "@fortawesome/free-regular-svg-icons";
@@ -10,12 +14,18 @@ import styled from "styled-components";
 // import { faApple } from "@fortawesome/free-brands-svg-icons";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+
+
+
+
   return (
     <div>
       <Container>
         <HeaderTop>
-          <HeaderTop1>회원가입</HeaderTop1>
-          <HeaderTop2>로그인</HeaderTop2>
+          <HeaderTop1 onClick={()=>{navigate("/signup")}}>회원가입</HeaderTop1>
+          <HeaderTop2 onClick={()=>{navigate("/login")}}>로그인</HeaderTop2>
           <HeaderTop3>고객센터</HeaderTop3>
         </HeaderTop>
         <HeaderContainer>
@@ -38,12 +48,7 @@ const Header = () => {
               <IconLocation></IconLocation>
               <IconHeart></IconHeart>
               <IconBasket></IconBasket>
-              {/* <FontAwesomeIcon icon="fa-solid fa-location-dot" />
-            <FontAwesomeIcon icon={faApple} /> */}
             </IconBox>
-
-            {/* <TextPurple>샛별/낮</TextPurple>
-        <Text>배송안내</Text> */}
           </Box>
         </HeaderContainer>
         <HeaderBottom>
@@ -68,9 +73,11 @@ const HeaderTop = styled.div`
   display: flex;
   flex-direction: row-reverse;
   margin: 10px 20px 10px 0;
+  
 `;
 const HeaderTop1 = styled.div`
   margin: 0 10px 0px 10px;
+  color: rgb(95, 0, 128);
 `;
 const HeaderTop2 = styled.div`
   margin: 0 10px 0px 10px;
