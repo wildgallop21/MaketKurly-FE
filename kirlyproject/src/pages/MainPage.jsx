@@ -7,10 +7,12 @@ import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Cardlist from"../components/CardList"
 
+
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import Card from "../components/Card"
+import CardList from "../components/CardList";
 
 
 SwiperCore.use([Navigation, Pagination]);
@@ -18,9 +20,13 @@ SwiperCore.use([Navigation, Pagination]);
 export default function MainPage() {
   return (
     <div>
+
       {/* <Card/> */}
       <Header/>
     <Cardlist/>
+
+      <Header />
+
       <SwipeBox>
         <Swiper
           style={{
@@ -96,7 +102,8 @@ export default function MainPage() {
         <CardTitle>
           이상품은 어때요?
         </CardTitle>
-        <Swiper
+        <CardList />
+        {/* <Swiper
           style={{
             width: "1550px",
             height: "370px",
@@ -114,17 +121,19 @@ export default function MainPage() {
           autoplay={{ delay: 3000 }}
         >
           <SwiperSlide>
-            cardlist1
+          cardlist1
+         
             <SlIMG1></SlIMG1>
           </SwiperSlide>
           <SwiperSlide>cardlist2</SwiperSlide>
           <SwiperSlide>cardlist3</SwiperSlide>
           <SwiperSlide>cardlist4</SwiperSlide>
-          {/* <SwiperSlide>Slide 5</SwiperSlide>
-      <SwiperSlide>Slide 6</SwiperSlide> */}
-        </Swiper>
+        </Swiper> */}
       </SwipeBox2>
+
       <Footer/>
+
+
     </div>
   );
 }

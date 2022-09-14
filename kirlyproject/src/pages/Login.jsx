@@ -1,32 +1,54 @@
 import React from "react";
 import styled from "styled-components";
-import { loginUserThunk } from "../redux/modules/users";
-import { useDispatch } from "react-redux";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 
 
 
 const Login = () => {
+    const navigate = useNavigate();
+
+    const [memberId, setMemberId]= useState("");
+    const [password, setPassword] = useState("");
+
+    const onChangeId = (e) => {
+        setMemberId(e.target.value);
+      };
     
-  const dispatch = useDispatch();
-  const [user_ID, setuser_ID] = useState({
-    user_ID: "",
-  });
-  const [user_PW, setuser_PW] = useState({
-    user_PW: "",
-  });
 
-  const loginDispatch = () => {
-    dispatch(
-      loginUserThunk({
-        memberId: user_ID,
-        password: user_PW,
-      })
-    );
-  };
+      const onChangePassword = (e) => {
+        setPassword(e.target.value);
+      };
 
-  console.log(user_ID,user_PW);
+      const sendRequestLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(
+                "http://52.79.58.138/member/login",
+                {
+                    memberId: memberId,
+                    password: password,
+                },
+            );
+            localStorage.setItem("authorization", response.headers["authorization"]);
+            console.log(response.headers)
+          localStorage.setItem(
+        "refresh-token",
+        response.headers["refresh-token"]
+      );
+      navigate("/");
+        } catch (error) {
+            alert("아이디와 비밀번호를 확인해주세요.");
+      }}
+      useEffect(() => {
+        console.log("token", localStorage.getItem("access-token"))
+        if (localStorage.getItem("access-token") !== null) {
+          console.log("성공이용")
+        }
+      }, []);
 
     return (
         <LoginContainer>
@@ -37,17 +59,13 @@ const Login = () => {
                     name="id"
                     type="text"
                     placeholder="아이디를 입력해주세요"
-                    onChange={(ev) => {
-                        setuser_ID(ev.target.value);
-                      }} />
+                    onChange={onChangeId} />
 
                     <input 
                     name="password"
                     type="password"
                     placeholder="비밀번호를 입력해주세요"
-                    onChange={(ev) => {
-                        setuser_PW(ev.target.value);
-                      }}/>
+                    onChange={onChangePassword}/>
 
                 </Inputdiv>
                 <Finddiv>
@@ -57,7 +75,7 @@ const Login = () => {
                 </Finddiv>
 
                 <div>
-                    <Loginbutton onClick={loginDispatch}>
+                    <Loginbutton onClick={sendRequestLogin}>
                         <span>로그인</span>
                     </Loginbutton>
                     <Signupbutton>
@@ -166,5 +184,4 @@ const Signupbutton = styled.button`
    display: inline-block;
     font-size: 16px;
     font-weight: 500;
-    }
-`
+    }`

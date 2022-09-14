@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
 const API_USERS_URL = "http://localhost:3001/users";
 
 const initialState = {
@@ -9,14 +8,14 @@ const initialState = {
     {
       member_id: "",
       password: "",
-      name:"",
-      email:"",
-      phone_number:"",
+      name: "",
+      email: "",
+      phone_number: "",
       address: "",
-      gender:"",
-      birth:"",
-      policy:""
-    }
+      gender: "",
+      birth: "",
+      policy: "",
+    },
   ],
   isLoading: false,
   error: null,
@@ -27,9 +26,12 @@ export const createUserThunk = createAsyncThunk(
   async (newUser, thunkAPI) => {
     try {
       // const data = await axios.post("http://localhost:3001/users", newUser);
+
+
       // const data = await axios.post("http://15.164.170.68/member/signup", newUser);
       const data = await axios.post('http://52.79.58.138/member/signup', newUser)
       console.log(data)
+
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -42,6 +44,7 @@ export const loginUserThunk = createAsyncThunk(
   async (userInfo, thunk) => {
     console.log("test");
     try {
+
       // const data =
         await // axios.post('http://localhost:3001/user/login', userInfo)
         axios
@@ -74,6 +77,7 @@ export const loginUserThunk = createAsyncThunk(
             //   alert("이메일과 비밀번호를 확인해주세요.");
             // }
           });
+
       // console.log(data);
     } catch (error) {
       return thunk.rejectWithValue(error);

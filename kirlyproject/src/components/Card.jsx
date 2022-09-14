@@ -36,6 +36,7 @@ import { useEffect } from "react";
   const item_list = useSelector((state) => state.posts)
   // console.log(item_list)
   // console.log(props)
+
     return(
     <>
     <Stdiv>
@@ -44,6 +45,7 @@ import { useEffect } from "react";
         <img 
         style={{ width: "267px", height: "320px" }}
         src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1657090094835l0.jpg"
+
         alt="img"
         />
         </ImageSt>
@@ -66,6 +68,7 @@ import { useEffect } from "react";
 
           {/* optional chaning */}
           </h3>
+
 
 
         <span styled={{marginLeft:"4px", fontsize: "16px", color:"rgb(250, 98, 47)"}}>31%</span>
@@ -97,10 +100,12 @@ const Cardsty = styled.div`
   padding: 0px 9px;
   background-repeat: no-repeat;
   background-size: cover;
+
   /* background-color:green  */
 `
 
 const ImageSt = styled.div`
+
   margin: auto;
 /* 
   background-color:red; */
