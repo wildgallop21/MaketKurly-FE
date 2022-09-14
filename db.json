@@ -2,29 +2,61 @@
   "posts": [
     {
       "id": 1,
-      "itemName": "test",
-      "itemPrice": "15000",
-      "itemIMG": "asdf"
-
+      "itemName": "갈비찜",
+      "itemPrice": "35000",
+      "itemIMG": "https://m.cj.co.kr/images/theKitchen/PHON/0000001571/0000005660/0000001571.jpg"
     },
     {
       "itemName": "사과",
       "itemPrice": "25000",
-      "itemIMG": "asdf",
-
+      "itemIMG": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBHEo87rFeShyXjprwT6DQuaJQxfJvO9ZbEQ&usqp=CAU",
       "id": 2
     },
     {
       "itemName": "감",
       "itemPrice": "35000",
-      "itemIMG": "asdf",
+      "itemIMG": "https://cdn.fneyefocus.com/news/photo/202109/16426_19771_5831.jpg",
       "id": 3
     },
     {
       "itemName": "스테이크",
       "itemPrice": "45000",
-      "itemIMG": "asdf",
+      "itemIMG": "https://sjnfzdfjrjgl1655541.cdn.ntruss.com/goods/3/2021/07/857_tmp_25da9db63027695da220c165d9b9b7692878view.jpg",
       "id": 4
+    },
+    {
+      "itemName": "파스타면",
+      "itemPrice": "25000",
+      "itemIMG": "https://static.wtable.co.kr/image/production/service/recipe/1767/8a70db02-325f-4dd0-9780-625a2e7cfefe.jpg",
+      "id": 5
+    },
+    {
+      "itemName": "감자",
+      "itemPrice": "10000",
+      "itemIMG": "https://www.shinsegaegroupnewsroom.com/wp-content/uploads/2020/07/%EC%9D%B4%EB%A7%88%ED%8A%B813_%EB%B3%B8%EB%AC%B801.png",
+      "id": 6
+    },
+    {
+      "itemName": "고르곤졸라피자",
+      "itemPrice": "25000",
+      "itemIMG": "https://blog.kakaocdn.net/dn/4LjO1/btqGQbzwWBd/MPbrBkBAyLgnq6VQk43eFk/img.png",
+      "id": 7
+    },
+    {
+      "itemName": "닭볽음탕",
+      "itemPrice": "350000",
+      "itemIMG": "https://images.chosun.com/resizer/5rKaicAL0edknlVwmZu4CAypSEQ=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/O3MADK4WHVFLPNV6PZ6625B2XU.jpg",
+      "id": 8
+    }
+  ],
+  "carts": [
+    {
+      "prodcut_Id": "1",
+      "id": 1
+    },
+    {
+      "prodcut_Id": "2",
+      "id": 2
     }
   ],
   "users": [

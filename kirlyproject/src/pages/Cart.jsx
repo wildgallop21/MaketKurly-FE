@@ -1,9 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 import CartListProduct from "../components/CartListProduct";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { getCartThunk } from "../redux/modules/carts";
 
 const Cart = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const  carts  = useSelector((state) => state.carts);
+  // console.log("carts조회",carts)
+  // test
+  const test = async () => {
+    try {
+      const cartList = await dispatch(getCartThunk());
+      // console.log(cartList)
+    } catch (err) {
+      console.log("err-->", err);
+    }
+  };
+  useEffect(() => {
+    // test()
+    dispatch(getCartThunk());
+    console.log("getcartthunk 조회", carts);
+  }, []);
+
+  console.log(carts);
+
   return (
     <div>
       <Box>
@@ -28,64 +53,48 @@ const Cart = () => {
                 <FoodTitleText>냉장식품</FoodTitleText>
               </FoodTitle>
             </FoodTitleBox>
-
-
             
-
-
-
+            {carts?.data?.map((el, idx) => {
+              console.log(el);
+              return (
+                <DivSt key={el.id}>
+                  <CartListProduct carts={el} />
+                  test
+                </DivSt>
+              );
+            })}
             <FoodTitleBox>
               <FoodTitle>
                 <FoodTitleIcon>아이콘</FoodTitleIcon>
                 <FoodTitleText>냉동식품</FoodTitleText>
               </FoodTitle>
             </FoodTitleBox>
-
-
-
-
             <FoodTitleBox>
               <FoodTitle>
                 <FoodTitleText>구매불가상품</FoodTitleText>
               </FoodTitle>
             </FoodTitleBox>
-
-
-
           </CartRightBox>
           <CartLeftBox>
-        <AddressBox>
-          <Address1>
-          배송지
-          </Address1>
-          <Address2>
-            서울시 행복동 행복아파트 11동 103호
-          </Address2>
-          <Address3>
-            샛별배송
-          </Address3>
-          <Address4>
-            배송지변경
-          </Address4>
-        </AddressBox>
-        <PriceBox>
-          <Price1>
-          <Price1A>상품금액</Price1A>
-          <Price1B>110000</Price1B>
-          </Price1>
-        </PriceBox>
-        <Order>
-            주문하기
-          </Order>
-          <Notice>
-쿠폰적립금은 주문서에서 사용가능합니다 <br/>
-주문완료상태일때만 주무취소가 가능합니다 <br/>
-마이컬리-주문내역상세페이지에서 주문취소가 가능합니다 <br/>
-상품별로 적립금지급기준이다를수 있습니다. <br/>
-          </Notice>
-
-
-
+            <AddressBox>
+              <Address1>배송지</Address1>
+              <Address2>서울시 행복동 행복아파트 11동 103호</Address2>
+              <Address3>샛별배송</Address3>
+              <Address4>배송지변경</Address4>
+            </AddressBox>
+            <PriceBox>
+              <Price1>
+                <Price1A>상품금액</Price1A>
+                <Price1B>110000</Price1B>
+              </Price1>
+            </PriceBox>
+            <Order>주문하기</Order>
+            <Notice>
+              쿠폰적립금은 주문서에서 사용가능합니다 <br />
+              주문완료상태일때만 주무취소가 가능합니다 <br />
+              마이컬리-주문내역상세페이지에서 주문취소가 가능합니다 <br />
+              상품별로 적립금지급기준이다를수 있습니다. <br />
+            </Notice>
           </CartLeftBox>
         </CartBox>
       </Box>
@@ -111,6 +120,12 @@ const CartBox = styled.div`
 `;
 const CartRightBox = styled.div`
   width: 742px;
+`;
+
+const DivSt = styled.div`
+  width: 1050px;
+  margin: 0px auto;
+  padding-bottom: 80px;
 `;
 
 const Select = styled.div`
@@ -164,42 +179,39 @@ const FoodContent = styled.div`
   flex-direction: row;
   /* justify-content: space-between; */
   align-items: center;
-
 `;
 
 const Check = styled.div`
-margin-right:12px; 
+  margin-right: 12px;
 `;
 const FoodImage = styled.div`
-width:60px;
-height:78px;
-border: 1rem solid;;
-border-color:black;
-/* border-radius:1px; */
-
-
+  width: 60px;
+  height: 78px;
+  border: 1rem solid;
+  border-color: black;
+  /* border-radius:1px; */
 `;
 
 const FoodText = styled.div`
   font-weight: 700;
   font-size: 20px;
-  margin: 0 10px 0 10px ;
+  margin: 0 10px 0 10px;
   /* line-height: 26px; */
   /* vertical-align: middle; */
 `;
 const FoodButton = styled.button`
-  width:28px;
-  height:28px;
-    background-color   : whitesmoke;
+  width: 28px;
+  height: 28px;
+  background-color: whitesmoke;
   border-color: lightgray;
-  margin: 0 10px 0 10px ;
+  margin: 0 10px 0 10px;
 `;
 const FoodPrice = styled.div`
-  width:28px;
-  height:28px;
-    background-color   : whitesmoke;
+  width: 28px;
+  height: 28px;
+  background-color: whitesmoke;
   border-color: lightgray;
-  margin: 0 10px 0 10px ;
+  margin: 0 10px 0 10px;
 `;
 
 const CartLeftBox = styled.div`
@@ -208,121 +220,110 @@ const CartLeftBox = styled.div`
   position: sticky;
   top: 60px;
   right: 0px;
-
 `;
 const AddressBox = styled.div`
   padding: 23px 19px 20px;
-    border-width: 1px 1px 0px;
-    border-top-style: solid;
-    border-right-style: solid;
-    border-left-style: solid;
-    border-top-color: rgb(242, 242, 242);
-    border-right-color: rgb(242, 242, 242);
-    border-left-color: rgb(242, 242, 242);
-    border-image: initial;
-    border-bottom-style: initial;
-    border-bottom-color: initial;
-    display:flex;
-    flex-direction:column
+  border-width: 1px 1px 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-top-color: rgb(242, 242, 242);
+  border-right-color: rgb(242, 242, 242);
+  border-left-color: rgb(242, 242, 242);
+  border-image: initial;
+  border-bottom-style: initial;
+  border-bottom-color: initial;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Address1 = styled.div`
-
-    padding-left: 24px;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 20px;
-    background: url(https://res.kurly.com/pc/service/cart/2007/ico_location.svg) 0px 50% / 20px 20px no-repeat;
+  padding-left: 24px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 20px;
+  background: url(https://res.kurly.com/pc/service/cart/2007/ico_location.svg)
+    0px 50% / 20px 20px no-repeat;
 `;
 
 const Address2 = styled.div`
-padding-left: 24px;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 20px;
-    margin: 10px 0 10px 0;
-    line-height: 150%
+  padding-left: 24px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 10px 0 10px 0;
+  line-height: 150%;
 `;
 
 const Address3 = styled.div`
-color: rgb(95, 0, 128);
-    font-size: 20px;
-    padding: 7px 0px 12px;
-
-
+  color: rgb(95, 0, 128);
+  font-size: 20px;
+  padding: 7px 0px 12px;
 `;
 
 const Address4 = styled.button`
-display: block;
-    padding: 0px 10px;
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
-    height: 36px;
-    border-radius: 3px;
-    color: rgb(95, 0, 128);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
-
+  display: block;
+  padding: 0px 10px;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  height: 36px;
+  border-radius: 3px;
+  color: rgb(95, 0, 128);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(95, 0, 128);
 `;
 
 const PriceBox = styled.div`
-padding: 23px 19px 20px;
-    border-width: 1px 1px 0px;
-    border-top-style: solid;
-    border-right-style: solid;
-    border-left-style: solid;
-    border-top-color: rgb(242, 242, 242);
-    border-right-color: rgb(242, 242, 242);
-    border-left-color: rgb(242, 242, 242);
-    border-image: initial;
-    border-bottom-style: initial;
-    border-bottom-color: initial;
-
+  padding: 23px 19px 20px;
+  border-width: 1px 1px 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-top-color: rgb(242, 242, 242);
+  border-right-color: rgb(242, 242, 242);
+  border-left-color: rgb(242, 242, 242);
+  border-image: initial;
+  border-bottom-style: initial;
+  border-bottom-color: initial;
 `;
 
 const Price1 = styled.div`
-display: flex;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    padding-top: 0px;
-
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding-top: 0px;
 `;
 const Price1A = styled.div`
-width: 100px;
-    font-size: 24px;
-    line-height: 24px;
-    white-space: nowrap;
-
+  width: 100px;
+  font-size: 24px;
+  line-height: 24px;
+  white-space: nowrap;
 `;
 const Price1B = styled.div`
-font-size: 24px;
-    line-height: 24px;
-    text-align: right;
-
-`;const Order = styled.button`
-display: block;
-    padding: 0px 10px;
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
-    height: 56px;
-    border-radius: 3px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(95, 0, 128);
-    border: 0px none;
-    font-weight: 500;
-    
-
+  font-size: 24px;
+  line-height: 24px;
+  text-align: right;
+`;
+const Order = styled.button`
+  display: block;
+  padding: 0px 10px;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  height: 56px;
+  border-radius: 3px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(95, 0, 128);
+  border: 0px none;
+  font-weight: 500;
 `;
 
 const Notice = styled.div`
-padding: 16px 0px;
-color: rgb(102, 102, 102);
-    margin: 6px 0px 0px -6px;
-    /* background: rgb(153, 153, 153); */
-
-    `;
-
+  padding: 16px 0px;
+  color: rgb(102, 102, 102);
+  margin: 6px 0px 0px -6px;
+  /* background: rgb(153, 153, 153); */
+`;
 
 export default Cart;

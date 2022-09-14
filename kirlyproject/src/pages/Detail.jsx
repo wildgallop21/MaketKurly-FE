@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getPost } from "../redux/modules/posts";
+import { postCartThunk } from "../redux/modules/carts";
 
 
 // const Detail=(posts)=>{
@@ -27,9 +28,18 @@ import { getPost } from "../redux/modules/posts";
   useEffect(() => {
     dispatch(getPosts(id))
     dispatch(getPost(id))
-    // console.log(getPosts())
+    console.log(id)
+    
   }, []);
-
+  console.log(id)
+  
+  const cartDispatch = () => {
+    dispatch(
+      postCartThunk({
+        prodcut_Id: id
+      })
+    )
+    }
 
 
 
@@ -125,7 +135,7 @@ import { getPost } from "../redux/modules/posts";
         </div>
         </Total>
         <BtnWrap>
-            <button className="btn">
+            <button className="btn" onClick={cartDispatch} >
               장바구니 담기
             </button>
           </BtnWrap>

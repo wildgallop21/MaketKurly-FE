@@ -42,12 +42,8 @@ import { useEffect } from "react";
     <Stdiv>
         <Cardsty onClick={() => navigate( `/detail/${posts.id}`)}>
             <ImageSt>
-        <img 
-        style={{ width: "267px", height: "320px" }}
-        src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1657090094835l0.jpg"
-
-        alt="img"
-        />
+        <img style={{ width: "267px", height: "320px" }}
+          alt="test" src={posts?.itemIMG}/>
         </ImageSt>
         <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
           {/* {item_list.posts[1].itemName} */}
@@ -68,7 +64,8 @@ import { useEffect } from "react";
           </h3>
           <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
           {/* {item_list.posts[1].itemName} */}
-          {posts?.itemIMG}
+          {/* <img alt="test" src={posts?.itemIMG}> */}
+          {/* </img> */}
 
           {/* optional chaning */}
           </h3>
