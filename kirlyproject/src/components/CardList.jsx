@@ -36,7 +36,7 @@ const CardList=()=>{
       <Swiper
           style={{
             width: "1770px",
-            height: "370px",
+            height: "570px",
             backgroundColor: "#FFF5F1",
             borderRadius: "12px",
           }}

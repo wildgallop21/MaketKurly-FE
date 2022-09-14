@@ -1,8 +1,34 @@
-import React from "react";
+
 import styled from "styled-components";
+import React , {useState, useCallback}from "react";
+import { useNavigate } from "react-router-dom";
+
+import Input from "../elements/Input";
+import More from "../elements/More";
+import Check from "../elements/Check";
+import { getPosts, postItemThunk } from "../redux/modules/posts";
+import { createUserThunk } from "../redux/modules/users";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+
+// const Detail=(posts)=>{
+  const Detail=()=>{
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
-const Detail=()=>{
+  // useEffect(() => {
+
+  //   dispatch(getPosts())
+  //   // console.log(getPosts())
+  // }, [dispatch]);
+  // }, []);
+  // const item_list = useSelector((state) => state.posts)
+
+
+
+
     return(
         //헤더 불러오기
         <>       
@@ -17,6 +43,8 @@ const Detail=()=>{
         <Titlediv>
             {/* 상품명 */}
             <Name>[YOZM]플레인그릭요거트500g</Name>
+            {/* <Name>{posts?.itemName}</Name> */}
+
             {/* 상품 간략 설명 */}
             <MiniDes>넉넉하게 맛보는 그릭요거트</MiniDes>
 

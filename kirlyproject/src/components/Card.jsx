@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import React , {useState, useCallback}from "react";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Input from "../elements/Input";
 import More from "../elements/More";
@@ -15,8 +16,16 @@ import { useEffect } from "react";
   const Card=({posts})=>{
     // const {itemName} = posts;
     console.log(posts)
+    
+   const price = posts?.itemPrice
+   function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
+
           // console.log({props})
   useEffect(() => {
  
@@ -30,7 +39,7 @@ import { useEffect } from "react";
     return(
     <>
     <Stdiv>
-        <Cardsty>
+        <Cardsty onClick={() => navigate( `/detail/${posts.id}`)}>
             <ImageSt>
         <img 
         style={{ width: "267px", height: "320px" }}
@@ -40,7 +49,20 @@ import { useEffect } from "react";
         </ImageSt>
         <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
           {/* {item_list.posts[1].itemName} */}
-          {posts.itemName}
+          {posts?.itemName}
+
+          {/* optional chaning */}
+          </h3>
+          <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
+          {/* {posts?.itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원 */}
+          {posts?.itemPrice}원
+
+          {/* {numberWithCommas(price)}원 */}
+
+          </h3>
+          <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
+          {/* {item_list.posts[1].itemName} */}
+          {posts?.itemIMG}
 
           {/* optional chaning */}
           </h3>
@@ -66,6 +88,7 @@ const Stdiv = styled.div`
 `
 
 const Cardsty = styled.div`
+
   width: 267px;
   height: 411px;
   margin: auto;
