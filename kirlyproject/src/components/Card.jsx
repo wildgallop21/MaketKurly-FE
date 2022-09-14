@@ -57,7 +57,11 @@ import { useEffect } from "react";
           </h3>
           <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
           {/* {posts?.itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원 */}
-          {posts?.itemPrice}원
+          {Number(posts.itemPrice)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              원
+          {/* {posts?.itemPrice}원 */}
 
           {/* {numberWithCommas(price)}원 */}
 
