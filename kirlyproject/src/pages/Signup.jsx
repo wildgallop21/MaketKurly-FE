@@ -26,7 +26,7 @@ const Signup=()=>{
 
 
 //이름, 아이디 받기
-    const [id, setId] = useState("");
+    const [memberId, setMemberId] = useState("");
     const [password, setPassword] = useState("");
     const [passwordCheck, setPasswordCheck] = useState("");
     const [name, setName] = useState("");
@@ -74,7 +74,7 @@ const Signup=()=>{
       const onChangeId= useCallback((e)=>{
         const regId = /^[A-Za-z0-9]{6,16}$/;
         const currentId = e.target.value;
-        setId(currentId);
+        setMemberId(currentId);
 
         //충족 했을때 안했을때 메세지 컬러도 변경해주기
         if (!regId.test(currentId)) {
@@ -142,29 +142,18 @@ const Signup=()=>{
           setPwcColor(color.success);
       }},[password])
 
-      // const submitHandler = async (e) => {
-      //   e.preventDefault();
-      //   try {
-      //     await axios.post(
-      //     "http://"
-      //     {
-      //       member_id: 
-      //     }
-      //     )
 
-      //   }
-      // }
-      
-//  const user = useSelector((state)=>state.)
 const signupDispatch = () => {
   dispatch(
     createUserThunk({
-      memberId: id,
+
+      memberId: memberId,
+
       password: password,
     })
   );
 };
-console.log(id,password);
+console.log(memberId,password);
 
 
 
@@ -187,7 +176,7 @@ console.log(id,password);
                     </SignupTh>
                     <SignupTd>
                       <Input
-                        value={id}
+                        value={memberId}
                         onFocus={onIdMouseFocus}
                         onChange={onChangeId}
                         type="text"
@@ -266,12 +255,9 @@ console.log(id,password);
                       주소<SignupStarstyle>*</SignupStarstyle>
                     </SignupTh>
                     <SignupTd>
-                      <button
-                        color="var(--main-purple)"
-                        background="white"
-                        font="var(--small-font)"
-                        pad="10px 150px"
-                      />
+                      <Addressbutton>
+                        <span><img src="https://res.kurly.com/pc/service/cart/2007/ico_search.svg"/>주소 검색</span>
+                      </Addressbutton>
                       <More
                         color="rgb(82, 82, 82)"
                         text="배송지에 따라 물품이 다를 수 있습니다"
@@ -450,19 +436,35 @@ console.log(id,password);
     width: 77%;
     padding: 10px;
   `;
+
+  const Addressbutton = styled.button`
+      display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    height: 44px;
+    border-radius: 4px;
+    color: rgb(95, 0, 128);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(95, 0, 128);
+  `
   
   const SignupTr = styled.tr``;
   
   const SignupDupbtnStyle = styled.a`
     display: inline-block;
     width: 23%;
-    border: 1px solid var(--main-purple);
+    border: 1px solid ;
+    border-color: rgb(95 0 128);
     padding: 12px 0px;
     border-radius: 4px;
-    color: var(--main-purple);
+    color: rgb(95 0 128);
     font-size: var(--small-font);
     font-weight: bold;
     text-align: center;
+
+    border-color: purple
   `;
   
   const SignupInputstyle = styled.input`
@@ -486,7 +488,7 @@ console.log(id,password);
   `;
   
   const SignupBtn = styled.button`
-    background-color: var(--main-purple);
+    background-color: rgb(95 0 128);
     margin: 50px;
     color: white;
     padding: 13px;
