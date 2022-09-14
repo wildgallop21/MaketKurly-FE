@@ -32,7 +32,7 @@ export const postCartThunk = createAsyncThunk(
     }
   }
 );
-
+ 
 export const getCartThunk = createAsyncThunk(
   "carts/getCartThunk",
   async (payload, thunkAPI) => {
