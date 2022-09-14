@@ -21,7 +21,7 @@ import { useEffect } from "react";
   useEffect(() => {
  
     dispatch(getPosts())
-    console.log(getPosts())
+    // console.log(getPosts())
   }, [dispatch]);
   // }, []);
   const item_list = useSelector((state) => state.posts)

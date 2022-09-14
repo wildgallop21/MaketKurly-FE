@@ -7,7 +7,11 @@ import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Cardlist from"../components/CardList"
+
+
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -15,6 +19,7 @@ export default function MainPage() {
   return (
     <div>
       {/* <Card/> */}
+      <Header/>
     <Cardlist/>
       <SwipeBox>
         <Swiper
@@ -119,6 +124,7 @@ export default function MainPage() {
       <SwiperSlide>Slide 6</SwiperSlide> */}
         </Swiper>
       </SwipeBox2>
+      <Footer/>
     </div>
   );
 }
