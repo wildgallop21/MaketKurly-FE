@@ -10,9 +10,9 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const  carts  = useSelector((state) => state.carts.data);
+  const  carts  = useSelector((state) => state.carts);
   // console.log("carts조회",carts)
-
+  // test
   const test = async () => {
     try {
       const cartList = await dispatch(getCartThunk());
@@ -53,7 +53,8 @@ const Cart = () => {
                 <FoodTitleText>냉장식품</FoodTitleText>
               </FoodTitle>
             </FoodTitleBox>
-            {carts[0]?.map((el, idx) => {
+            
+            {carts?.data?.map((el, idx) => {
               console.log(el);
               return (
                 <DivSt key={el.id}>
