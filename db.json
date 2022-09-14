@@ -2,15 +2,29 @@
   "posts": [
     {
       "id": 1,
-      "itemName": "test"
+      "itemName": "test",
+      "itemPrice": "15000",
+      "itemIMG": "asdf"
+
     },
     {
       "itemName": "사과",
+      "itemPrice": "25000",
+      "itemIMG": "asdf",
+
       "id": 2
     },
     {
       "itemName": "감",
+      "itemPrice": "35000",
+      "itemIMG": "asdf",
       "id": 3
+    },
+    {
+      "itemName": "스테이크",
+      "itemPrice": "45000",
+      "itemIMG": "asdf",
+      "id": 4
     }
   ],
   "users": [
