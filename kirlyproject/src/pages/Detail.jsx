@@ -40,6 +40,7 @@ import { postCartThunk } from "../redux/modules/carts";
       })
     )
     }
+    const imgDetail = item_list[{id}.id-1]?.itemName
 
 
 
@@ -49,10 +50,15 @@ import { postCartThunk } from "../redux/modules/carts";
         <>       
          <DetailPagediv>
             <Imagediv>
-            <img 
+            {/* <img 
             styled={{width: "430px", height: "552px"}}
             //이미지 받아오게끔 변경필요함 
-            src="https://img-cf.kurly.com/shop/data/goods/1655704363603l0.jpg" />
+            src="https://img-cf.kurly.com/shop/data/goods/1655704363603l0.jpg" /> */}
+            <img  
+            styled={{width: "430px", height: "552px"}}
+            alt = "img" src= {item_list[{id}.id-1]?.itemIMG}
+          
+            ></img>
                     </ Imagediv>
        <Imagediv>
        {item_list[{id}.id-1]?.itemIMG}
@@ -160,6 +166,8 @@ const Imagediv = styled.div `
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
+  width: "430px"; 
+  height: "552px"
 
 `
 
