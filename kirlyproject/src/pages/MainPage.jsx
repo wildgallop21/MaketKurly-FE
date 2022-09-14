@@ -22,8 +22,6 @@ export default function MainPage() {
     <div>
 
       {/* <Card/> */}
-      <Header/>
-
       <Header />
 
       <SwipeBox>

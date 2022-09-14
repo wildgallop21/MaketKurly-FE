@@ -1,9 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 import CartListProduct from "../components/CartListProduct";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { getCartThunk } from "../redux/modules/carts";
 
 
 const Cart = () => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const {carts} = useSelector((state) => state.carts)
+  console.log("carts조회",carts)
+
+  useEffect(() => {
+ 
+    dispatch(getCartThunk())
+    // console.log(getPosts())
+  }, []);
+
+
+
   return (
     <div>
       <Box>
@@ -29,11 +48,12 @@ const Cart = () => {
               </FoodTitle>
             </FoodTitleBox>
 
-
-              
-
-
-
+            {carts?.map((carts, idx) => (
+            <DivSt key = {carts.id}>
+            <CartListProduct carts={carts} />
+            test
+            </DivSt>
+            ))}
             <FoodTitleBox>
               <FoodTitle>
                 <FoodTitleIcon>아이콘</FoodTitleIcon>
@@ -111,6 +131,12 @@ const CartBox = styled.div`
 `;
 const CartRightBox = styled.div`
   width: 742px;
+`;
+
+const DivSt = styled.div`
+  width: 1050px;
+  margin: 0px auto;
+  padding-bottom: 80px;
 `;
 
 const Select = styled.div`

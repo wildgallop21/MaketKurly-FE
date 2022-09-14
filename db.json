@@ -5,13 +5,11 @@
       "itemName": "test",
       "itemPrice": "15000",
       "itemIMG": "asdf"
-
     },
     {
       "itemName": "사과",
       "itemPrice": "25000",
       "itemIMG": "asdf",
-
       "id": 2
     },
     {
@@ -25,6 +23,16 @@
       "itemPrice": "45000",
       "itemIMG": "asdf",
       "id": 4
+    }
+  ],
+  "carts": [
+    {
+      "prodcut_Id": "1",
+      "id": 1
+    },
+    {
+      "prodcut_Id": "2",
+      "id": 2
     }
   ],
   "users": [
