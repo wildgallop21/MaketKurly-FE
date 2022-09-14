@@ -50,7 +50,7 @@ export const getCartThunk = createAsyncThunk(
 
 
 /* createSlice */
-export const postsSlice = createSlice({
+export const cartsSlice = createSlice({
   // 모듈 이름
   name: "carts",
   // 초기 상태값
@@ -59,10 +59,19 @@ export const postsSlice = createSlice({
   reducers: {},
   //extraReducers
   extraReducers: {
+    /* Fulfilled */
+    [postCartThunk.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.data = action.payload;
+    },
+    [getCartThunk.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.data = [action.payload];
+    },
 
   },
 });
 
 /* export */
-export const {} = postsSlice.actions;
-export default postsSlice.reducer;
+export const {} = cartsSlice.actions;
+export default cartsSlice.reducer;

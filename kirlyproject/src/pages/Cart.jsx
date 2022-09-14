@@ -12,13 +12,16 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {carts} = useSelector((state) => state.carts)
-  console.log("carts조회",carts)
+  const {carts} = useSelector((state) => state)
+  // console.log("carts조회",carts)
 
+  const test = async ()=>{try{const cartList = await dispatch(getCartThunk()); 
+    // console.log(cartList)
+    ;}catch(err){console.log("err-->",err);}}
   useEffect(() => {
- 
+    // test()
     dispatch(getCartThunk())
-    // console.log(getPosts())
+    console.log("getcartthunk 조회",carts)
   }, []);
 
 
@@ -47,13 +50,15 @@ const Cart = () => {
                 <FoodTitleText>냉장식품</FoodTitleText>
               </FoodTitle>
             </FoodTitleBox>
-
-            {carts?.map((carts, idx) => (
+            
+            {carts?.data?.map((el, idx) => {
+              console.log(el)
+            return (              
             <DivSt key = {carts.id}>
             <CartListProduct carts={carts} />
             test
-            </DivSt>
-            ))}
+            </DivSt>)
+})}
             <FoodTitleBox>
               <FoodTitle>
                 <FoodTitleIcon>아이콘</FoodTitleIcon>
