@@ -32,7 +32,7 @@ const CardList=()=>{
 
   return(
     <div>
-      <div>이상품어떄요</div>
+      
 
       <Swiper
           style={{
@@ -42,11 +42,14 @@ const CardList=()=>{
             borderRadius: "12px",
           }}
           spaceBetween={8}
-          initialSlide={1}
+          initialSlide={3}
           centeredSlides={true}
           pagination={{
             clickable: true,
           }}
+          slidesPerView={4}
+
+
           navigation
           autoplay={{ delay: 3000 }}
         >

@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getPost } from "../redux/modules/posts";
+import { postCartThunk } from "../redux/modules/carts";
 
 
 // const Detail=(posts)=>{
@@ -27,9 +28,19 @@ import { getPost } from "../redux/modules/posts";
   useEffect(() => {
     dispatch(getPosts(id))
     dispatch(getPost(id))
-    // console.log(getPosts())
+    console.log(id)
+    
   }, []);
-
+  console.log(id)
+  
+  const cartDispatch = () => {
+    dispatch(
+      postCartThunk({
+        prodcut_Id: id
+      })
+    )
+    }
+    const imgDetail = item_list[{id}.id-1]?.itemName
 
 
 
@@ -39,10 +50,15 @@ import { getPost } from "../redux/modules/posts";
         <>       
          <DetailPagediv>
             <Imagediv>
-            <img 
+            {/* <img 
             styled={{width: "430px", height: "552px"}}
             //이미지 받아오게끔 변경필요함 
-            src="https://img-cf.kurly.com/shop/data/goods/1655704363603l0.jpg" />
+            src="https://img-cf.kurly.com/shop/data/goods/1655704363603l0.jpg" /> */}
+            <img  
+            styled={{width: "430px", height: "552px"}}
+            alt = "img" src= {item_list[{id}.id-1]?.itemIMG}
+          
+            ></img>
                     </ Imagediv>
        <Imagediv>
        {item_list[{id}.id-1]?.itemIMG}
@@ -125,7 +141,7 @@ import { getPost } from "../redux/modules/posts";
         </div>
         </Total>
         <BtnWrap>
-            <button className="btn">
+            <button className="btn" onClick={cartDispatch} >
               장바구니 담기
             </button>
           </BtnWrap>
@@ -150,6 +166,8 @@ const Imagediv = styled.div `
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
+  width: "430px"; 
+  height: "552px"
 
 `
 
