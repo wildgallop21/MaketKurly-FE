@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import React from "react";
 import styled from "styled-components";
-import Card from "../components/Card";
+
 import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import Card from "../components/Card"
+
 import CardList from "../components/CardList";
 
 
@@ -23,7 +23,7 @@ export default function MainPage() {
 
       {/* <Card/> */}
       <Header/>
-    <Cardlist/>
+
 
       <Header />
 
@@ -102,7 +102,7 @@ export default function MainPage() {
         <CardTitle>
           이상품은 어때요?
         </CardTitle>
-        <CardList />
+        <CardList/>
         {/* <Swiper
           style={{
             width: "1550px",

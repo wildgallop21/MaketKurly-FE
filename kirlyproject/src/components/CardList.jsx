@@ -62,7 +62,7 @@ const CardList=()=>{
     </div>
   )
 }
-export default CardList
+export default CardList;
 
 const DivSt = styled.div`
 
