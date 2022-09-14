@@ -1,22 +1,59 @@
-import React from "react";
 import styled from "styled-components";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { getPosts } from "../redux/modules/posts";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getPost } from "../redux/modules/posts";
+import { postCartThunk } from "../redux/modules/carts";
 
 
-const Detail=()=>{
+  const Detail=()=>{
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const {id}  = useParams();
+
+
+    const item_list = useSelector((state) => state.posts.posts) 
+
+  useEffect(() => {
+    dispatch(getPosts(id))
+    // dispatch(getPost(id))
+
+    
+  }, []);
+
+  
+  const cartDispatch = () => {
+    dispatch(
+      postCartThunk({
+        prodcut_Id: id
+      })
+    )
+    }
+
+
+
+
     return(
         //헤더 불러오기
         <>       
          <DetailPagediv>
             <Imagediv>
             <img 
+            alt="d"
             styled={{width: "430px", height: "552px"}}
-            //이미지 받아오게끔 변경필요함 
-            src="https://img-cf.kurly.com/shop/data/goods/1655704363603l0.jpg" />
+            //이미지 받아오게끔 변경필요함 -- 변경함~
+            src={item_list[{id}.id-1]?.itemIMG} />
                     </ Imagediv>
-       
+
         <Titlediv>
             {/* 상품명 */}
-            <Name>[YOZM]플레인그릭요거트500g</Name>
+            {/* <Name>[YOZM]플레인그릭요거트500g</Name> */}
+            <Name>{item_list[{id}.id-1]?.itemName}</Name>
+
             {/* 상품 간략 설명 */}
             <MiniDes>넉넉하게 맛보는 그릭요거트</MiniDes>
 
@@ -24,8 +61,17 @@ const Detail=()=>{
             {/* 할인율 */}
             <DiscountPer>10%</DiscountPer>
             {/* 할인가격 */}
-            <Price>13,500원</Price>
-            
+            {/* <Price>13,500원</Price> */}
+            {/* <Price>{item_list[{id}.id]?.itemPrice}</Price> */}
+            <Price>
+            {Number(item_list[{id}.id-1]?.itemPrice)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              원
+
+
+            </Price>
+
             </Pricediv>
 
             <InformationWrap>
@@ -81,7 +127,7 @@ const Detail=()=>{
         </div>
         </Total>
         <BtnWrap>
-            <button className="btn">
+            <button className="btn" onClick={cartDispatch} >
               장바구니 담기
             </button>
           </BtnWrap>

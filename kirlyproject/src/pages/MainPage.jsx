@@ -1,17 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import React from "react";
 import styled from "styled-components";
-
 import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-
 import CardList from "../components/CardList";
 
 
@@ -19,12 +14,8 @@ SwiperCore.use([Navigation, Pagination]);
 
 export default function MainPage() {
   return (
+    <>
     <div>
-
-      {/* <Card/> */}
-      <Header/>
-
-
       <Header />
 
       <SwipeBox>
@@ -90,9 +81,6 @@ export default function MainPage() {
               alt="main-banner-592"
             />
           </SwiperSlide>
-          {/* <SwiperSlide>Slide 4</SwiperSlide>
-      <SwiperSlide>Slide 5</SwiperSlide>
-      <SwiperSlide>Slide 6</SwiperSlide> */}
         </Swiper>
       </SwipeBox>
       <Event>
@@ -102,39 +90,16 @@ export default function MainPage() {
         <CardTitle>
           이상품은 어때요?
         </CardTitle>
-        <CardList/>
-        {/* <Swiper
-          style={{
-            width: "1550px",
-            height: "370px",
-            backgroundColor: "pink",
-            borderRadius: "12px",
-          }}
-          // slidesPerView={4}
-          spaceBetween={8}
-          initialSlide={1}
-          centeredSlides={true}
-          navigation
-          pagination={{
-            clickable: true,
-          }}
-          autoplay={{ delay: 3000 }}
-        >
-          <SwiperSlide>
-          cardlist1
-         
-            <SlIMG1></SlIMG1>
-          </SwiperSlide>
-          <SwiperSlide>cardlist2</SwiperSlide>
-          <SwiperSlide>cardlist3</SwiperSlide>
-          <SwiperSlide>cardlist4</SwiperSlide>
-        </Swiper> */}
+        <CardList />
+  
       </SwipeBox2>
 
-      <Footer/>
+     
 
 
     </div>
+    <Footer/>
+    </>
   );
 }
 
@@ -170,7 +135,3 @@ width: 650px;
     margin: 0 10px  0 10px  ;
     /* padding: 40px 0px; */
 `;
-
-const SlIMG1 = styled.img``;
-const SlIMG2 = styled.img``;
-const SlIMG3 = styled.img``;

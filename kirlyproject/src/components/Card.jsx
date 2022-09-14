@@ -1,57 +1,61 @@
-
 import styled from "styled-components";
-import React , {useState, useCallback}from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
-import Input from "../elements/Input";
-import More from "../elements/More";
-import Check from "../elements/Check";
-import { getPosts, postItemThunk } from "../redux/modules/posts";
-import { createUserThunk } from "../redux/modules/users";
+import { getPosts } from "../redux/modules/posts";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-// const Card=(props)=>{
   const Card=({posts})=>{
-    // const {itemName} = posts;
-    console.log(posts)
+
+    // console.log(posts)
+    
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-          // console.log({props})
+
+
+
   useEffect(() => {
  
     dispatch(getPosts())
-    // console.log(getPosts())
+
   }, [dispatch]);
-  // }, []);
+
   const item_list = useSelector((state) => state.posts)
-  // console.log(item_list)
-  // console.log(props)
 
     return(
     <>
     <Stdiv>
-        <Cardsty>
+        <Cardsty onClick={() => navigate( `/detail/${posts.id}`)}>
             <ImageSt>
+        {/* 상품이미지 */}
         <img 
         style={{ width: "267px", height: "320px" }}
-        src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1657090094835l0.jpg"
-
+        src={posts?.itemIMG}
         alt="img"
         />
         </ImageSt>
         <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
-          {/* {item_list.posts[1].itemName} */}
-          {posts.itemName}
+          {/* 상품 이름 */}
+          {posts?.itemName}
+          </h3>
+          <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
+            {/* 가격+뒤에서 세번째 자리에 , 찍어줌 */}
+          {Number(posts.itemPrice)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              원
 
-          {/* optional chaning */}
+          </h3>
+          <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
+
           </h3>
 
 
-
-        <span styled={{marginLeft:"4px", fontsize: "16px", color:"rgb(250, 98, 47)"}}>31%</span>
+            {/* 할인전 가격, 할인율 불러와야하는데 어떡해야할까요.... */}
+        {/* <span styled={{marginLeft:"4px", fontsize: "16px", color:"rgb(250, 98, 47)"}}>31%</span>
         <span styled={{ marginLeft: "4px", fontSize: "16px" }}>8,800원</span>
-        <BeforeDiscount>12,000원</BeforeDiscount>
+        <BeforeDiscount>12,000원</BeforeDiscount> */}
         </Cardsty>
 
     </Stdiv>
@@ -69,6 +73,7 @@ const Stdiv = styled.div`
 `
 
 const Cardsty = styled.div`
+
   width: 267px;
   height: 411px;
   margin: auto;

@@ -1,21 +1,9 @@
-import axios from "axios";
 import React from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-// import { location } from "react-icons/fa";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCommentDots, faBell } from "@fortawesome/free-regular-svg-icons";
-// import {
-//   faCalendarCheck,
-//   faCaretRight,
-// } from "@fortawesome/free-solid-svg-icons";
-// import { faApple } from "@fortawesome/free-brands-svg-icons";
-
 const Header = () => {
   const navigate = useNavigate();
-
 
 
 

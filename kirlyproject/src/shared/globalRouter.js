@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Post from "../pages/Post";
 import CardList from "../components/CardList";
+import Detail from "../pages/Detail";
 const Router = () => {
   return (
     <BrowserRouter>
@@ -15,7 +16,7 @@ const Router = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/post" element={<Post />} />
         <Route path="/cardlist" element={<CardList />} />
-
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
