@@ -1,30 +1,69 @@
-import React from "react";
+
+import styled from "styled-components";
+import React , {useState, useCallback}from "react";
+import { useNavigate } from "react-router-dom";
+
+import Input from "../elements/Input";
+import More from "../elements/More";
+import Check from "../elements/Check";
+import { getPosts, postItemThunk } from "../redux/modules/posts";
+import { createUserThunk } from "../redux/modules/users";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Card from "./Card";
+import { Pagination, Navigation } from "swiper";
 
 const CardList=()=>{
-    return(
-        <Swiper
-        style={{
-            width: "1550px",
-            height: "435px",
-            backgroundColor: "pink",
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+  const {posts} = useSelector((state) => state.posts)
+  console.log(posts)
+
+  useEffect(() => {
+ 
+    dispatch(getPosts())
+    console.log(getPosts())
+  }, []);
+
+
+
+  return(
+    <div>
+      <div>이상품어떄요</div>
+
+      <Swiper
+          style={{
+            width: "1770px",
+            height: "370px",
+            backgroundColor: "#FFF5F1",
             borderRadius: "12px",
           }}
-        slidesPerView={4}
-        spaceBetween={8}
-        initialSlide={1}
-        centeredSlides={true}
-        pagination={{
+          spaceBetween={8}
+          initialSlide={1}
+          centeredSlides={true}
+          pagination={{
             clickable: true,
           }}
           navigation
-          autoplay={{ delay: 3000 }}>
-            <div>
-                <SwiperSlide><Card /></SwiperSlide>
-            </div>
-        </Swiper>
-    );
-}
+          autoplay={{ delay: 3000 }}
+        >
+                <DivSt>
 
-export default CardList;
+          {posts.map((posts, idx) => (
+          <SwiperSlide key={posts.id}><Card posts={posts}/></SwiperSlide>
+          ))}
+                  </DivSt>
+                  </Swiper>
+
+
+    </div>
+  )
+}
+export default CardList
+
+const DivSt = styled.div`
+
+`

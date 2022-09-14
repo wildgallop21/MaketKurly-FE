@@ -59,6 +59,7 @@ export const loginUserThunk = createAsyncThunk(
                 //splice
                 // "Authoriazation",
                 // response.headers["accesstoken"]
+                
                 "Authoriazation",
                 response.headers["Authorization"]
                 // `Bearer ${response.headers.Authorization}`

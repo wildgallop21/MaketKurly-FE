@@ -2,22 +2,31 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import React from "react";
 import styled from "styled-components";
-
+import Card from "../components/Card";
 import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Card from "../components/Card"
 import CardList from "../components/CardList";
+
 
 SwiperCore.use([Navigation, Pagination]);
 
 export default function MainPage() {
   return (
     <div>
+
+      {/* <Card/> */}
+      <Header/>
+    <Cardlist/>
+
       <Header />
+
       <SwipeBox>
         <Swiper
           style={{
@@ -121,7 +130,10 @@ export default function MainPage() {
           <SwiperSlide>cardlist4</SwiperSlide>
         </Swiper> */}
       </SwipeBox2>
-      <Footer />
+
+      <Footer/>
+
+
     </div>
   );
 }

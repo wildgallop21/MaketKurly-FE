@@ -5,7 +5,7 @@ import axios from "axios";
 // data, isLoading, error로 상태관리
 const initialState = {
   posts: [{
-    item_Name: "testname",
+    itemName: "testname",
     item_Price: "testprice"
   }],
   isLoading: false,
@@ -35,7 +35,7 @@ export const getItemThunk = createAsyncThunk(
   "posts/getItemThunk",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.post("http://localhost:3001/posts", payload);
+      const { data } = await axios.get("http://localhost:3001/posts", payload);
       console.log(data);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -48,11 +48,12 @@ export const getItemThunk = createAsyncThunk(
 export const getPosts = createAsyncThunk(
   "GET_ALL_POSTS",
   async (payload, thunkAPI) => {
+    console.log("test시작")
     try {
       // const { data } = await axios.get(teamBaseLogedURL);
       const { data } = await axios.get("http://localhost:3001/posts");
-      console.log(data);
-      return thunkAPI.fulfillWithValue(data.data);
+      console.log("test");
+      return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
