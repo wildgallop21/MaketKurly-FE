@@ -12,8 +12,9 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [totalP, settotalp] =useState(0) 
+  const [price, setPrice] =useState(0) 
 
-
+//  console.log (totalP)
   const  carts  = useSelector((state) => state.carts);
   console.log("carts조회",carts)
   // test
@@ -65,8 +66,27 @@ const Cart = () => {
               console.log(el);
               return (
                 <DivSt key={el.id}>
-                  <CartListProduct carts={el} totalP={totalP} props />
-                  test
+                  <CartListProduct 
+                  carts={el} 
+                  totalP={totalP}
+                  settotalp={settotalp}
+                  price={price}
+                  props />
+                  
+                  {/* {item_list &&
+            item_list.map((p, ix) => {
+              return (
+                <CartListProduct
+                  key={ix}
+                  {...p}
+                  user={p.user}
+                  price={price}
+                  setPrice={setPrice}
+                />
+              );
+            })} */}
+
+
                 </DivSt>
               );
             })}

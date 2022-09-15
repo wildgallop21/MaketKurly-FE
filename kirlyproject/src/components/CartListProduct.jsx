@@ -21,7 +21,7 @@ const CartListProduct = (props) => {
   const cart_productId = useSelector((state) => state.carts.data) 
   console.log("state.carts조회",cart_productId)
   const post_product = useSelector((state) => state.posts.posts) 
-  console.log("state.posts조회",post_product)
+  console.log("state.posts.posts조회",post_product)
   useEffect(() => {
     dispatch(getCartThunk())
 
@@ -32,6 +32,7 @@ const CartListProduct = (props) => {
   const filtered = post_product.filter( (el)=> el.id === Number(props.carts.product_Id) )
   const [num, setNum] = useState(1);
   console.log(props.totalP)
+  console.log(props.price)
   
   const upCount =()=>{
     setNum(num+1);
@@ -43,6 +44,17 @@ const CartListProduct = (props) => {
 
   const price = num*filtered[0]?.itemPrice
   const totalPrice = price *num
+
+  // settotalp([...totalp,{id : card.id, sum : 700})
+
+  // const result = props.settotalP((props) => 
+  // {return {...props.totalP, totalPrice }})
+
+  // console.log(result)
+
+  // const price = props.item.price;
+  // const setPrice = num * price;
+
 
   // [{id:1 ,price:500 } , {id:2 ,price:300 } ]
 
