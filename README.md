@@ -17,8 +17,8 @@ ___
       
 ## 🙆‍♂️ 팀 소개    
 +  [CMS-Front] 장현욱 : https://github.com/artlogy/MarketKurly-CMS   
-+  [Front] 조수진   
-+  [Front] 손다윤 : https://github.com/suzz-in
++  [Front] 조수진 : https://github.com/suzz-in  
++  [Front] 손다윤  
 +  [BackEnd] 이수민, 배상훈, 안재원, 정수민 : https://github.com/bsh9254/MarketKurly-BE   
 
 ## 🛠 설치패키지
