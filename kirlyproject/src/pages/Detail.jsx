@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,11 +11,13 @@ import Header from "../components/Header";
 import { useState } from "react";
 
 
+
   const Detail=()=>{
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {id}  = useParams();
+
 
 
     const item_list = useSelector((state) => state.posts.posts) 
@@ -26,6 +29,7 @@ import { useState } from "react";
     
   }, []);
 
+
   
   const cartDispatch = () => {
     dispatch(
@@ -34,6 +38,7 @@ import { useState } from "react";
       })
     )
     }
+
 //버튼으로 수량 변경 
     const [num, setNum] = useState(1);
     
@@ -51,18 +56,23 @@ import { useState } from "react";
 
 
 
+
+
+
     return(
         //헤더 불러오기
         <>       
         <Header />
          <DetailPagediv>
             <Imagediv>
+
             <img 
             alt="d"
             styled={{width: "430px", height: "552px"}}
             //이미지 받아오게끔 변경필요함 -- 변경함~
             src={item_list[{id}.id-1]?.itemIMG} />
                     </ Imagediv>
+
 
         <Titlediv>
             {/* 상품명 */}
@@ -177,6 +187,8 @@ const Imagediv = styled.div `
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
+  width: "430px"; 
+  height: "552px"
 
 `
 

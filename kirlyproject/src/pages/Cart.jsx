@@ -12,9 +12,11 @@ const Cart = () => {
 
   const  carts  = useSelector((state) => state.carts);
 
+
   useEffect(() => {
     dispatch(getCartThunk());
     // console.log("getcartthunk 조회", carts);
+
   }, []);
 
   console.log(carts);
@@ -45,10 +47,13 @@ const Cart = () => {
             </FoodTitleBox>
             
             {carts?.data?.map((el, idx) => {
+
               // console.log(el);
               return (
                 <DivSt key={el.id}>
                   <CartListProduct carts={el} />
+
+
 
                 </DivSt>
               );

@@ -23,6 +23,12 @@ const Post=()=>{
   const [item_Name, setItemName] = useState({
     item_Name: "",
   });
+  const [item_Price, setItem_Price] = useState({
+    item_Price: "",
+  });
+  const [item_IMG, setItem_IMG] = useState({
+    item_IMG: "",
+  });
 
 
   useEffect(() => {
@@ -35,15 +41,16 @@ const Post=()=>{
     dispatch(
       postItemThunk({
         itemName: item_Name,
-
+        itemPrice: item_Price,
+        itemIMG: item_IMG
       })
     );
   };
 
-  console.log(item_Name);
+  console.log(item_Name, item_Price);
 
-  const item_list = useSelector((state) => state.posts)
-  console.log(item_list)
+  // const item_list = useSelector((state) => state.posts)
+  // console.log(item_list)
 
 
   return (
@@ -56,9 +63,25 @@ const Post=()=>{
                     onChange={(ev) => {
                         setItemName(ev.target.value);
                       }} />
-      <div>{item_list.posts[1].itemName}</div> <br/>
+      {/* <div>{item_list.posts[1].itemName}</div> <br/> */}
+  
       <div>이미지</div> <br/>
-      <div>재고현황???</div> <br/>
+      <input 
+                    name="id"
+                    type="text"
+                    placeholder="이미지URL을 입력해주세요"
+                    onChange={(ev) => {
+                        setItem_IMG(ev.target.value);
+                      }} />
+      <div>상품가격</div> <br/>
+      <input 
+                    name="id"
+                    type="text"
+                    placeholder="상품가격을 입력해주세요"
+                    onChange={(ev) => {
+                        setItem_Price(ev.target.value);
+                      }} />
+
       <div>
 
         </div> <br/>

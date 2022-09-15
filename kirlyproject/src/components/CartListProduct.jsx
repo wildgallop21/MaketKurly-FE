@@ -14,8 +14,10 @@ const CartListProduct = (posts) => {
   console.log(posts)
   const dispatch = useDispatch();
 
+
   const cart_product = useSelector((state) => state.carts.data) 
   // console.log("state.carts조회",cart_product)
+
 
   useEffect(() => {
     dispatch(getCartThunk())
@@ -28,12 +30,16 @@ const CartListProduct = (posts) => {
   return (
 
     <div>
-      
+
       <Box>
 
             <FoodTitleBox>
               <FoodTitle>
+
                 <FoodTitleIcon></FoodTitleIcon>
+
+
+
                 <FoodTitleText>냉장식품</FoodTitleText>
               </FoodTitle>
             </FoodTitleBox>
@@ -41,6 +47,7 @@ const CartListProduct = (posts) => {
               <DivSt>
                 
               </DivSt>
+
 
             <img 
             styled={{width: "60px", height: "78px"}}
@@ -56,20 +63,26 @@ const CartListProduct = (posts) => {
             
             <FoodText>
             {cart_product[0]?.itemName}
+
             </FoodText>
             <FoodButton>
               -
             </FoodButton>
+
+
             1
+
             <FoodButton>
               +
             </FoodButton>
             <FoodPrice>
+
             {/* {cart_product[0]?.itemPrice} */}
             {Number(cart_product[0]?.itemPrice)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               원
+
             </FoodPrice>
             <FoodButton>
               X
@@ -125,6 +138,7 @@ const FoodContent = styled.div`
 const Check = styled.div`
 margin-right:12px; 
 `;
+
 // const FoodImage = styled.img`
 // width:60px;
 // height:78px;
@@ -134,6 +148,8 @@ margin-right:12px;
 
 
 // `;
+
+
 
 const FoodText = styled.div`
   font-weight: 700;
@@ -155,4 +171,7 @@ const FoodPrice = styled.div`
     background-color   : whitesmoke;
   border-color: lightgray;
   margin: 0 10px 0 10px ;
+
 `;
+
+

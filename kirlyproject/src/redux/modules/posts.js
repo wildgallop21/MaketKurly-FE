@@ -60,6 +60,18 @@ export const getPosts = createAsyncThunk(
   }
 );
 
+// [GET - 특정ID를 가진 데이터만 조회]
+export const getPost = createAsyncThunk("getPost", async (detailId, thunkAPI) => {
+  try {
+    // const { data } = await postAPI.post(args);
+    const { data } = await axios.get(`http://localhost:3001/posts/${detailId}`);
+    return thunkAPI.fulfillWithValue(data);
+    // return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+    // return alert("실패");
+  }
+});
 
 
 // [GET - 특정ID를 가진 데이터만 조회]

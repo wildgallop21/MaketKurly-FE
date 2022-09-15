@@ -26,6 +26,7 @@ const CardList=()=>{
   return(
     <div>
 
+
       <Swiper
         // 카드를 보여주는 개수
         slidesPerView={4}
@@ -41,6 +42,7 @@ const CardList=()=>{
         navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper"
+
         >
                 <DivSt>
 

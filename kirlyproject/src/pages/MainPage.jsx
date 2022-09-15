@@ -7,6 +7,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+
+
 import CardList from "../components/CardList";
 
 
@@ -16,6 +18,7 @@ export default function MainPage() {
   return (
     <>
     <div>
+
       <Header />
 
       <SwipeBox>
@@ -43,27 +46,8 @@ export default function MainPage() {
               src="https://product-image.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/bb6b5057-b7a4-4870-b4de-de192729c085.jpg"
               alt="main-banner-596"
               style={{
-                width:"25%"              }
+                width:"100%"              }
               }
-            ></img>
-                        <img
-              className="main-banner-image"
-              src="https://product-image.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/bb6b5057-b7a4-4870-b4de-de192729c085.jpg"
-              alt="main-banner-596"
-              style={{
-                width:"25%"              }
-              }
-
-            ></img>
-
-<img
-              className="main-banner-image"
-              src="https://product-image.kurly.com/cdn-cgi/image/format=auto/banner/main/pc/img/bb6b5057-b7a4-4870-b4de-de192729c085.jpg"
-              alt="main-banner-596"
-              style={{
-                width:"25%"              }
-              }
-
             ></img>
 
           </SwiperSlide>
