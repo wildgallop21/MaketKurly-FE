@@ -126,7 +126,6 @@ const Box = styled.div`
   padding-bottom: 80px;
 `;
 const DivSt = styled.div`
-
 `;
 
 
@@ -156,7 +155,6 @@ const FoodContent = styled.div`
   flex-direction: row;
   /* justify-content: space-between; */
   align-items: center;
-
 `;
 
 const Check = styled.div`
@@ -168,8 +166,6 @@ height:78px;
 border: 1rem solid;;
 border-color:black;
 /* border-radius:1px; */
-
-
 `;
 
 const FoodText = styled.div`
@@ -193,5 +189,3 @@ const FoodPrice = styled.div`
   border-color: lightgray;
   margin: 0 10px 0 10px ;
 `;
-
-
