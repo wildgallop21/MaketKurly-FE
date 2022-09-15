@@ -31,7 +31,8 @@ const CartListProduct = (props) => {
 
   const filtered = post_product.filter( (el)=> el.id === Number(props.carts.product_Id) )
   const [num, setNum] = useState(1);
-    
+  console.log(props.totalP)
+  
   const upCount =()=>{
     setNum(num+1);
   }
@@ -41,13 +42,20 @@ const CartListProduct = (props) => {
   const value =(e)=>setNum(Number(e.target.value));
 
   const price = num*filtered[0]?.itemPrice
-  let sum =[];
-  // const 총 가격 = [];
-// filtered. map((p, idx) => { 총가격.push(p.아이템프라이스)})
-  const newSum = filtered. map((p, idx) => { sum.push(price) })
-  let CartPrice = 0; 
-  const newSumPrice = newSum.map ( (el) => CartPrice= el+ CartPrice )
-  console.log(newSum)
+  const totalPrice = price *num
+
+  // [{id:1 ,price:500 } , {id:2 ,price:300 } ]
+
+  console.log(totalPrice)
+
+
+
+
+// let sum =[]
+//   const newSum = filtered. map((p, idx) => { sum.push(totalPrice) })
+//   let CartPrice = 0; 
+//   const newSumPrice = newSum.map ( (el) => CartPrice= el+ CartPrice )
+//   console.log(sum)
   return (
     <div>
       <Box>
@@ -75,7 +83,6 @@ const CartListProduct = (props) => {
             {/* {(cart_productId[0].product_Id)}
             {props?.carts?.id} */}
             {filtered[0]?.itemName}
-            {CartPrice}
              {/* [연세우유 x 마켓컬리] 전용목장우유 900mL */}
             </FoodText>
             <FoodButton onClick={downCount}>
@@ -86,12 +93,12 @@ const CartListProduct = (props) => {
               +
             </FoodButton>
             <FoodPrice>
-              
+            {/* {totalPrice} */}
             {num*filtered[0]?.itemPrice}
             </FoodPrice>
-            <FoodButton>
+            {/* <FoodButton>
               X
-            </FoodButton>
+            </FoodButton> */}
             </FoodContent>
       </Box>
     </div>

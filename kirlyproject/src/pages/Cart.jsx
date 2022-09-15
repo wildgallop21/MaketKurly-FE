@@ -6,10 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { getCartThunk } from "../redux/modules/carts";
 import { getPost, getPosts } from "../redux/modules/posts";
+import { useState } from "react";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [totalP, settotalp] =useState(0) 
+
 
   const  carts  = useSelector((state) => state.carts);
   console.log("carts조회",carts)
@@ -29,6 +32,7 @@ const Cart = () => {
     dispatch(getPost())
     console.log("getcartthunk 조회", carts);
   }, []);
+
 
   console.log(carts);
 
@@ -61,7 +65,7 @@ const Cart = () => {
               console.log(el);
               return (
                 <DivSt key={el.id}>
-                  <CartListProduct carts={el} />
+                  <CartListProduct carts={el} totalP={totalP} props />
                   test
                 </DivSt>
               );
