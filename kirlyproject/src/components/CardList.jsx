@@ -35,23 +35,20 @@ const CardList=()=>{
       
 
       <Swiper
-          style={{
-            width: "1770px",
-            height: "570px",
-            backgroundColor: "#FFF5F1",
-            borderRadius: "12px",
-          }}
-          spaceBetween={8}
-          initialSlide={3}
-          centeredSlides={true}
-          pagination={{
-            clickable: true,
-          }}
-          slidesPerView={4}
-
-
-          navigation
-          autoplay={{ delay: 3000 }}
+        // 카드를 보여주는 개수
+        slidesPerView={4}
+        // 카드 사이 공백
+        spaceBetween={0}
+        slidesPerGroup={4}
+        // 무한 루프를 돌릴 것인지
+        loop={true}
+        loopFillGroupWithBlank={true}
+        pagination={{
+          clickable: true
+        }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className="mySwiper"
         >
                 <DivSt>
 

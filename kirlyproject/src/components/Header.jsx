@@ -37,7 +37,8 @@ const Header = () => {
                   src="https://res.kurly.com/images/marketkurly/logo/logo_x2.png"
                 />
               </Logo>
-              <LogoName>마켓컬리</LogoName>
+              <LogoName onClick={()=>{navigate("/")}}
+              >마켓컬리</LogoName>
             </Logocontainer>
             <SearchBox>
               <Search></Search>
@@ -47,7 +48,7 @@ const Header = () => {
             <IconBox>
               <IconLocation></IconLocation>
               <IconHeart></IconHeart>
-              <IconBasket></IconBasket>
+              <IconBasket onClick={()=>{navigate("/cart")}}></IconBasket>
             </IconBox>
           </Box>
         </HeaderContainer>
@@ -148,6 +149,7 @@ const LogoName = styled.div`
   font-weight: 500;
   font-size: 30px;
   vertical-align: bottom;
+  
 `;
 const Logocontainer = styled.div`
   width: 300px;

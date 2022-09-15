@@ -1,76 +1,58 @@
-
 import styled from "styled-components";
-import React , {useState, useCallback}from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
-import Input from "../elements/Input";
-import More from "../elements/More";
-import Check from "../elements/Check";
-import { getPosts, postItemThunk } from "../redux/modules/posts";
-import { createUserThunk } from "../redux/modules/users";
+import { getPosts } from "../redux/modules/posts";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getPost } from "../redux/modules/posts";
 import { postCartThunk } from "../redux/modules/carts";
-
-
-// const Detail=(posts)=>{
+import Header from "../components/Header";
+import { useState } from "react";
   const Detail=()=>{
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {id}  = useParams();
-
-    const itemId = id.id 
-    const item_list = useSelector((state) => state.posts.posts) 
-    console.log(item_list)
+    const item_list = useSelector((state) => state.posts.posts)
   useEffect(() => {
     dispatch(getPosts(id))
-    dispatch(getPost(id))
-    console.log(id)
-    
+    // dispatch(getPost(id))
   }, []);
-  console.log(id)
-  
   const cartDispatch = () => {
     dispatch(
       postCartThunk({
-        product_Id: id
+        prodcut_Id: id
       })
     )
     }
-    const imgDetail = item_list[{id}.id-1]?.itemName
-
-
-
-
+//버튼으로 수량 변경
+    const [num, setNum] = useState(1);
+    const upCount =()=>{
+      setNum(num+1);
+    }
+    const downCount= () => {
+      setNum(num>0?num-1:0);
+    }
+    const value =(e)=>setNum(Number(e.target.value));
+    const price =item_list[{id}.id-1]?.itemPrice;
+    const setPrice = num * price
     return(
         //헤더 불러오기
-        <>       
+        <>
+        <Header />
          <DetailPagediv>
             <Imagediv>
-            {/* <img 
+            <img
+            alt="d"
             styled={{width: "430px", height: "552px"}}
-            //이미지 받아오게끔 변경필요함 
-            src="https://img-cf.kurly.com/shop/data/goods/1655704363603l0.jpg" /> */}
-            <img  
-            styled={{width: "430px", height: "552px"}}
-            alt = "img" src= {item_list[{id}.id-1]?.itemIMG}
-          
-            ></img>
+            //이미지 받아오게끔 변경필요함 -- 변경함~
+            src={item_list[{id}.id-1]?.itemIMG} />
                     </ Imagediv>
-       <Imagediv>
-       {item_list[{id}.id-1]?.itemIMG}
-       </Imagediv>
         <Titlediv>
             {/* 상품명 */}
             {/* <Name>[YOZM]플레인그릭요거트500g</Name> */}
             <Name>{item_list[{id}.id-1]?.itemName}</Name>
-
             {/* 상품 간략 설명 */}
             <MiniDes>넉넉하게 맛보는 그릭요거트</MiniDes>
-
             <Pricediv>
             {/* 할인율 */}
             <DiscountPer>10%</DiscountPer>
@@ -82,12 +64,8 @@ import { postCartThunk } from "../redux/modules/carts";
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               원
-
-
             </Price>
-
             </Pricediv>
-
             <InformationWrap>
                 <dl className="list">
                     <dt className="title">배송</dt>
@@ -117,7 +95,6 @@ import { postCartThunk } from "../redux/modules/carts";
                     <dt className="title">입고안내</dt>
                     <dd className="desc">매주 화/목/토 정기입고</dd>
                 </dl>
-
             </InformationWrap>
         </Titlediv>
         <Boxwrap>
@@ -125,18 +102,25 @@ import { postCartThunk } from "../redux/modules/carts";
         <Option>
             <span className="count">
                 <button className="down btn"
+                onClick={downCount}
+                disabled={num < 2}
                 ></button>
-                <input className="inp"/>
-                <button className="up btn"></button>
+                <input className="inp"
+                onChange={value}
+                value={num}/>
+                <button className="up btn"
+                onClick={upCount}></button>
             </span>
         </Option>
         </Boxwrap>
-
-
         <Total>
         <div className="price">
             <strong>총 상품금액 : </strong>
-            <span className="num">13,500</span>
+            <span className="num">
+            {Number(setPrice)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </span>
             <span className="won">원</span>
         </div>
         </Total>
@@ -147,34 +131,28 @@ import { postCartThunk } from "../redux/modules/carts";
           </BtnWrap>
         </DetailPagediv>
         </>
-
     )
 }
-
 export default Detail;
-
 const DetailPagediv= styled.div`
   width: 1050px;
   height: 987px;
   margin: 0 auto;
   padding-top: 20px;
   margin-bottom: 50px;
-
+  margin-top:5rem;
 `
 const Imagediv = styled.div `
   float: left;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  width: "430px"; 
+  width: "430px";
   height: "552px"
-
 `
-
 const Titlediv = styled.div`
   float: right;
   width: 560px;
-
 `
 const Name = styled.div`
   display: block;
@@ -185,7 +163,6 @@ const Name = styled.div`
   word-break: break-all;
   letter-spacing: -0.5px;
 `
-
 const MiniDes = styled.span`
   display: block;
   padding: 4px 60px 0 0;
@@ -194,7 +171,6 @@ const MiniDes = styled.span`
   line-height: 20px;
   word-break: break-all;
 `
-
 const Pricediv = styled.div`
     flex-direction: row;
     align-items: flex-end;
@@ -202,15 +178,12 @@ const Pricediv = styled.div`
     font-weight: bold;
     line-height: 30px;
     letter-spacing: -0.5px;
-
 `
-
 const DiscountPer = styled.span`
    padding-right: 9px;
     font-size: 28px;
     color: rgb(250, 98, 47);
 `
-
 const Price = styled.span`
 font-weight: 700;
   font-size: 28px;
@@ -227,19 +200,16 @@ font-weight: 700;
     letter-spacing: 0;
   }
 `;
-
-
-
 const InformationWrap = styled.div`
   float: right;
   width: 560px;
   margin-top: 19px;
   padding-bottom: 25px;
-  border-top: 1px solid #f4f4f4;
+  border-top: 1px solid #F4F4F4;
   .list {
     overflow: hidden;
     padding: 13px 0;
-    border-bottom: 1px solid #f4f4f4;
+    border-bottom: 1px solid #F4F4F4;
   }
   .title {
     float: left;
@@ -255,7 +225,6 @@ const InformationWrap = styled.div`
     word-break: break-all;
   }
 `;
-
 const Boxwrap = styled.div`
   float: right;
   width: 560px;
@@ -282,23 +251,23 @@ const Boxwrap = styled.div`
     overflow: hidden;
     width: 100%;
     padding: 9px 0 9px 15px;
-    border-top: 1px solid #f4f4f4;
+    border-top: 1px solid #F4F4F4;
     font-size: 12px;
     line-height: 20px;
     letter-spacing: -0.3px;
   }
 `;
-
 const Option = styled.div`
   margin-left: 65px;
   padding-top: 0;
   overflow: hidden;
+  float:right;
   .count {
     overflow: hidden;
     float: left;
     width: 88px;
     height: 30px;
-    border: 1px solid #dddfe1;
+    border: 1px solid #DDDFE1;
     border-radius: 3px;
   }
   .down {
@@ -343,7 +312,7 @@ const Total = styled.div`
   display: block;
   float: right;
   padding: 30px 0 20px;
-  border-top: 1px solid #f4f4f4;
+  border-top: 1px solid #F4F4F4;
   .price {
     overflow: hidden;
     text-align: right;
@@ -368,7 +337,6 @@ const Total = styled.div`
     vertical-align: -1px;
   }
 `
-
 const BtnWrap = styled.div`
   display: flex;
   flex-direction: row-reverse;
@@ -382,8 +350,8 @@ const BtnWrap = styled.div`
     font-weight: 600;
     line-height: normal;
     color: #fff;
-    background-color: #5f0081;
-    border: 1px solid #5f0081;
+    background-color: #5F0081;
+    border: 1px solid #5F0081;
     cursor: pointer;
   }
 `;

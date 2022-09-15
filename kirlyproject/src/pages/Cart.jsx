@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { getCartThunk } from "../redux/modules/carts";
 import { getPost, getPosts } from "../redux/modules/posts";
 import { useState } from "react";
+import Header from "../components/Header";
+
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -39,6 +41,7 @@ const Cart = () => {
 
   return (
     <div>
+      <Header />
       <Box>
         <Title>장바구니</Title>
         <CartBox>

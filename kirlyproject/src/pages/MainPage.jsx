@@ -141,7 +141,9 @@ const SwipeBox2 = styled.div`
   width: 100%;
   min-width: 200px;
   height: 370px;
-  /* object-fit: cover; */
+  object-fit: cover;
+  margin: 50px 0 250px 0;
+
 `;
 const Event = styled.div`
 width: 650px;

@@ -103,6 +103,8 @@ const FooterTop = styled.div`
   justify-content: space-between;
   overflow: hidden;
   padding-bottom: 67px;
+  margin-top:4rem;
+
 `;
 
 const FooterTop1 = styled.div`
