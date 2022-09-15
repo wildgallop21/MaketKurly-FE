@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getCartThunk } from "../redux/modules/carts";
 
+  // let sum =0 , sum = sum+ 가격 
 
 
 const CartListProduct = (props) => {
@@ -29,16 +30,27 @@ const CartListProduct = (props) => {
   }, [dispatch]);
 
   const filtered = post_product.filter( (el)=> el.id === Number(props.carts.product_Id) )
-  console.log("props인자조회",props)
-  console.log("filtered조회",filtered)
+  const [num, setNum] = useState(1);
+    
+  const upCount =()=>{
+    setNum(num+1);
+  }
+  const downCount= () => {
+    setNum(num>0?num-1:0);
+  }
+  const value =(e)=>setNum(Number(e.target.value));
 
-
-  console.log("장바구니 상품번호 조회",cart_productId[0].product_Id)
-
+  const price = num*filtered[0]?.itemPrice
+  let sum =[];
+  // const 총 가격 = [];
+// filtered. map((p, idx) => { 총가격.push(p.아이템프라이스)})
+  const newSum = filtered. map((p, idx) => { sum.push(price) })
+  let CartPrice = 0; 
+  const newSumPrice = newSum.map ( (el) => CartPrice= el+ CartPrice )
+  console.log(newSum)
   return (
     <div>
       <Box>
-
             <FoodTitleBox>
               <FoodTitle>
                 <FoodTitleIcon>아이콘</FoodTitleIcon>
@@ -63,18 +75,19 @@ const CartListProduct = (props) => {
             {/* {(cart_productId[0].product_Id)}
             {props?.carts?.id} */}
             {filtered[0]?.itemName}
+            {CartPrice}
              {/* [연세우유 x 마켓컬리] 전용목장우유 900mL */}
             </FoodText>
-            <FoodButton>
+            <FoodButton onClick={downCount}>
               -
             </FoodButton>
-            3
-            <FoodButton>
+            {num}
+            <FoodButton onClick={upCount}>
               +
             </FoodButton>
             <FoodPrice>
               
-              {filtered[0]?.itemPrice}
+            {num*filtered[0]?.itemPrice}
             </FoodPrice>
             <FoodButton>
               X
@@ -84,6 +97,7 @@ const CartListProduct = (props) => {
     </div>
   );
 };
+
 
 export default CartListProduct
 
