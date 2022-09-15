@@ -34,7 +34,7 @@ import { useState } from "react";
   const cartDispatch = () => {
     dispatch(
       postCartThunk({
-        prodcut_Id: id
+        product_Id: id
       })
     )
     }

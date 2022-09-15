@@ -5,19 +5,38 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { getCartThunk } from "../redux/modules/carts";
+import { getPost, getPosts } from "../redux/modules/posts";
+import { useState } from "react";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [totalP, settotalp] =useState(0) 
+  const [price, setPrice] =useState(0) 
 
+//  console.log (totalP)
   const  carts  = useSelector((state) => state.carts);
 
+  console.log("carts조회",carts)
+  // test
+  const test = async () => {
+    try {
+      const cartList = await dispatch(getCartThunk());
+      // console.log(cartList)
+    } catch (err) {
+      console.log("err-->", err);
+    }
+  };
 
   useEffect(() => {
     dispatch(getCartThunk());
-    // console.log("getcartthunk 조회", carts);
+
+    dispatch(getPosts())
+    dispatch(getPost())
+    console.log("getcartthunk 조회", carts);
 
   }, []);
+
 
   console.log(carts);
 
@@ -51,7 +70,26 @@ const Cart = () => {
               // console.log(el);
               return (
                 <DivSt key={el.id}>
-                  <CartListProduct carts={el} />
+
+                  <CartListProduct 
+                  carts={el} 
+                  totalP={totalP}
+                  settotalp={settotalp}
+                  price={price}
+                  props />
+                  
+                  {/* {item_list &&
+            item_list.map((p, ix) => {
+              return (
+                <CartListProduct
+                  key={ix}
+                  {...p}
+                  user={p.user}
+                  price={price}
+                  setPrice={setPrice}
+                />
+              );
+            })} */}
 
 
 

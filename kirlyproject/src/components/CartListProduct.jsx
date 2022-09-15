@@ -7,17 +7,18 @@ import { getCartThunk } from "../redux/modules/carts";
 import Header from "../components/Header"
 
 
+  // let sum =0 , sum = sum+ 가격 
 
 
-const CartListProduct = (posts) => {
+const CartListProduct = (props) => {
 
-  console.log(posts)
   const dispatch = useDispatch();
 
-
-  const cart_product = useSelector((state) => state.carts.data) 
-  // console.log("state.carts조회",cart_product)
-
+  const navigate = useNavigate();
+  const cart_productId = useSelector((state) => state.carts.data) 
+  console.log("state.carts조회",cart_productId)
+  const post_product = useSelector((state) => state.posts.posts) 
+  console.log("state.posts.posts조회",post_product)
 
   useEffect(() => {
     dispatch(getCartThunk())
@@ -26,13 +27,50 @@ const CartListProduct = (posts) => {
     // console.log(getPosts())
   }, [dispatch]);
 
+  const filtered = post_product.filter( (el)=> el.id === Number(props.carts.product_Id) )
+  const [num, setNum] = useState(1);
+  console.log(props.totalP)
+  console.log(props.price)
+  
+  const upCount =()=>{
+    setNum(num+1);
+  }
+  const downCount= () => {
+    setNum(num>0?num-1:0);
+  }
+  const value =(e)=>setNum(Number(e.target.value));
 
+  const price = num*filtered[0]?.itemPrice
+  const totalPrice = price *num
+
+  // settotalp([...totalp,{id : card.id, sum : 700})
+
+  // const result = props.settotalP((props) => 
+  // {return {...props.totalP, totalPrice }})
+
+  // console.log(result)
+
+  // const price = props.item.price;
+  // const setPrice = num * price;
+
+
+  // [{id:1 ,price:500 } , {id:2 ,price:300 } ]
+
+  console.log(totalPrice)
+
+
+
+
+// let sum =[]
+//   const newSum = filtered. map((p, idx) => { sum.push(totalPrice) })
+//   let CartPrice = 0; 
+//   const newSumPrice = newSum.map ( (el) => CartPrice= el+ CartPrice )
+//   console.log(sum)
   return (
 
     <div>
 
       <Box>
-
             <FoodTitleBox>
               <FoodTitle>
 
@@ -48,51 +86,48 @@ const CartListProduct = (posts) => {
                 
               </DivSt>
 
-
-            <img 
-            styled={{width: "60px", height: "78px"}}
-            src={cart_product[0]?.itemIMG}
-            alt="" className="css-1wfsi82 e31wziv0"
-            />
-
-            {/* <FoodImage src={cart_product[0]?.itemIMG}
-            alt="" className="css-1wfsi82 e31wziv0">
-              음식사진
-
-            </FoodImage> */}
+              <Check>
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGc+CiAgICAgICAgICAgIDxnPgogICAgICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE3Ni4wMDAwMDAsIC0xMDkwLjAwMDAwMCkgdHJhbnNsYXRlKDEwMC4wMDAwMDAsIDkzNi4wMDAwMDApIHRyYW5zbGF0ZSg2MC4wMDAwMDAsIDE0Mi4wMDAwMDApIHRyYW5zbGF0ZSgxNi4wMDAwMDAsIDEyLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMiIgZmlsbD0iIzVGMDA4MCIvPgogICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik03IDEyLjY2N0wxMC4zODUgMTYgMTggOC41Ii8+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K" alt="" className="css-1wfsi82 e31wziv0"/>
+            </Check>
+            <FoodImage>
+              {/* <img alt="test" src={filtered[0]?.itemIMG}
+              styled={{width: "130px", height: "200px"}}>
+              </img> */}
+              
+            </FoodImage>
             
             <FoodText>
-            {cart_product[0]?.itemName}
+            {/* {(cart_productId[0].product_Id)}
+            {props?.carts?.id} */}
+            {filtered[0]?.itemName}
+             {/* [연세우유 x 마켓컬리] 전용목장우유 900mL */}
+
+
 
             </FoodText>
-            <FoodButton>
+            <FoodButton onClick={downCount}>
               -
             </FoodButton>
 
-
-            1
-
-            <FoodButton>
+            {num}
+            <FoodButton onClick={upCount}>
               +
             </FoodButton>
             <FoodPrice>
-
-            {/* {cart_product[0]?.itemPrice} */}
-            {Number(cart_product[0]?.itemPrice)
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              원
+            {/* {totalPrice} */}
+            {num*filtered[0]?.itemPrice}
 
             </FoodPrice>
-            <FoodButton>
+            {/* <FoodButton>
               X
-            </FoodButton>
+            </FoodButton> */}
             </FoodContent>
       </Box>
     </div>
 
   );
 };
+
 
 export default CartListProduct
 
