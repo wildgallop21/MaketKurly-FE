@@ -78,7 +78,7 @@ const Login = () => {
                     <Loginbutton onClick={sendRequestLogin}>
                         <span>로그인</span>
                     </Loginbutton>
-                    <Signupbutton>
+                    <Signupbutton onClick={()=>{navigate("/signup")}}>
                         <span>회원가입</span>
                     </Signupbutton>
                 </div>

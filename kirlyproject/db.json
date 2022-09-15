@@ -1,29 +1,32 @@
-{"carts": [
-  {
-    "prodcut_Id": "1",
-    "id": 1,
-    "itemName": "[주원산오리] 싸먹는 오리 슬라이스",
-    "itemPrice": "2800",
-    "itemIMG": "https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1604905794898l0.jpg"
-  },
-  {
-    "prodcut_Id": "2",
-    "id": 2
-  }
-],
+{
+  "carts": [
+    {
+      "prodcut_Id": "1",
+      "id": 1,
+      "itemName": "[주원산오리] 싸먹는 오리 슬라이스",
+      "itemPrice": "2800",
+      "itemIMG": "https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1604905794898l0.jpg"
+    },
+    {
+      "prodcut_Id": "2",
+      "id": 2
+    },
+    {
+      "prodcut_Id": "1",
+      "id": 3
+    }
+  ],
   "posts": [
     {
       "id": 1,
       "itemName": "[주원산오리] 싸먹는 오리 슬라이스",
       "itemPrice": "2800",
       "itemIMG": "https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1604905794898l0.jpg"
-
     },
     {
       "itemName": "[풀무원] 쏙떡쏙떡",
       "itemPrice": "11980",
       "itemIMG": "https://img-cf.kurly.com/cdn-cgi/image/width=676,format=auto/shop/data/goods/1628733352273l0.jpg",
-
       "id": 2
     },
     {
@@ -111,7 +114,6 @@
       "id": "WT0mo7B"
     }
   ],
-
   "comments": [
     {
       "id": 1,

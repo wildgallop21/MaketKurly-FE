@@ -25,7 +25,7 @@ const Header = () => {
                   src="https://res.kurly.com/images/marketkurly/logo/logo_x2.png"
                 />
               </Logo>
-              <LogoName>마켓컬리</LogoName>
+              <LogoName onClick={()=>{navigate("/")}}>마켓컬리</LogoName>
             </Logocontainer>
             <SearchBox>
               <Search></Search>
