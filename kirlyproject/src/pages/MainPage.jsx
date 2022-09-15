@@ -86,11 +86,11 @@ export default function MainPage() {
       <Event>
       <img src="https://product-image.kurly.com/banner/random-band/pc/img/6dcd7d28-61ac-4589-8d7d-dad01401a3e1.jpg" alt=""/>
       </Event>
-      <SwipeBox2>
+      <SwipeBox2 styled={{height:"fit-contents"}}>
         <CardTitle>
           이상품은 어때요?
         </CardTitle>
-        <CardList />
+        <CardList styled={{height:"fit-contents"}}/>
   
       </SwipeBox2>
 
@@ -127,7 +127,7 @@ const CardTitle = styled.div`
 const SwipeBox2 = styled.div`
   width: 100%;
   min-width: 200px;
-  height: 370px;
+  height: "fit-contents";
   /* object-fit: cover; */
 `;
 const Event = styled.div`

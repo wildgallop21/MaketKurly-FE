@@ -39,7 +39,7 @@ import { useEffect } from "react";
           {/* 상품 이름 */}
           {posts?.itemName}
           </h3>
-          <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
+          <h3 styled={{marginLeft:"4px", fontsize: "15px"}}>
             {/* 가격+뒤에서 세번째 자리에 , 찍어줌 */}
           {Number(posts.itemPrice)
                 .toString()
@@ -47,9 +47,9 @@ import { useEffect } from "react";
               원
 
           </h3>
-          <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
+          {/* <h3 styled={{marginLeft:"4px", fontsize: "16px"}}>
 
-          </h3>
+          </h3> */}
 
 
             {/* 할인전 가격, 할인율 불러와야하는데 어떡해야할까요.... */}
