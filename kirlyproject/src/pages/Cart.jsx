@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { getCartThunk } from "../redux/modules/carts";
+import { getPost, getPosts } from "../redux/modules/posts";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const  carts  = useSelector((state) => state.carts);
-  // console.log("carts조회",carts)
+  console.log("carts조회",carts)
   // test
   const test = async () => {
     try {
@@ -24,6 +25,8 @@ const Cart = () => {
   useEffect(() => {
     // test()
     dispatch(getCartThunk());
+    dispatch(getPosts())
+    dispatch(getPost())
     console.log("getcartthunk 조회", carts);
   }, []);
 

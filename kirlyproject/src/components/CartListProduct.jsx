@@ -13,14 +13,14 @@ import { getCartThunk } from "../redux/modules/carts";
 
 
 
-const CartListProduct = (posts) => {
+const CartListProduct = (props) => {
 
-  console.log(posts)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cart_product = useSelector((state) => state.carts) 
-  console.log("state.carts조회",cart_product)
-
+  const cart_productId = useSelector((state) => state.carts.data) 
+  console.log("state.carts조회",cart_productId)
+  const post_product = useSelector((state) => state.posts.posts) 
+  console.log("state.posts조회",post_product)
   useEffect(() => {
     dispatch(getCartThunk())
 
@@ -28,6 +28,12 @@ const CartListProduct = (posts) => {
     // console.log(getPosts())
   }, [dispatch]);
 
+  const filtered = post_product.filter( (el)=> el.id === Number(props.carts.product_Id) )
+  console.log("props인자조회",props)
+  console.log("filtered조회",filtered)
+
+
+  console.log("장바구니 상품번호 조회",cart_productId[0].product_Id)
 
   return (
     <div>
@@ -52,7 +58,10 @@ const CartListProduct = (posts) => {
             </FoodImage>
             
             <FoodText>
-             [연세우유 x 마켓컬리] 전용목장우유 900mL
+            {/* {(cart_productId[0].product_Id)}
+            {props?.carts?.id} */}
+            {filtered[0]?.itemName}
+             {/* [연세우유 x 마켓컬리] 전용목장우유 900mL */}
             </FoodText>
             <FoodButton>
               -

@@ -36,7 +36,7 @@ import { postCartThunk } from "../redux/modules/carts";
   const cartDispatch = () => {
     dispatch(
       postCartThunk({
-        prodcut_Id: id
+        product_Id: id
       })
     )
     }
