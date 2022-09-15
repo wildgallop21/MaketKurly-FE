@@ -39,7 +39,7 @@ import { useState } from "react";
         //헤더 불러오기
         <>
         <Header />
-         <DetailPagediv>
+         <DetailPagediv> 
             <Imagediv>
             <img
             alt="d"
