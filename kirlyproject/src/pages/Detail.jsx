@@ -34,8 +34,9 @@ import { useState } from "react";
       })
     )
     }
-
+//버튼으로 수량 변경 
     const [num, setNum] = useState(1);
+    
     const upCount =()=>{
       setNum(num+1);
     }
@@ -53,7 +54,7 @@ import { useState } from "react";
     return(
         //헤더 불러오기
         <>       
-        <Header onClick={()=>{"navigate(/)"}}/>
+        <Header />
          <DetailPagediv>
             <Imagediv>
             <img 
