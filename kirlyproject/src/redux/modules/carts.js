@@ -1,24 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-/* InitialState */
-// data, isLoading, error로 상태관리
 
-// const initialState = {
-//   carts: [{
-//     test:"test"
-//   }],
-//   isLoading: false,
-//   error: null,
-// };
 const initialState = {
-    carts: [{
-      test:"test"
-    }],
-    isLoading: false,
-    error: null,
-  };
-  
+  carts: [
+    {
+      test: "test",
+    },
+  ],
+  isLoading: false,
+  error: null,
+};
+
 
 export const postCartThunk = createAsyncThunk(
   "carts/postCartThunk",
@@ -32,7 +25,7 @@ export const postCartThunk = createAsyncThunk(
     }
   }
 );
- 
+
 export const getCartThunk = createAsyncThunk(
   "carts/getCartThunk",
   async (payload, thunkAPI) => {
@@ -47,6 +40,17 @@ export const getCartThunk = createAsyncThunk(
 );
 
 
+export const editCartThunk = createAsyncThunk(
+  "carts/editCartThunk",
+  async (payload, thunkAPI) => {
+    try {
+      const { data } = await axios.put("http://localhost:3001/carts", payload);
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 
 /* createSlice */
@@ -66,6 +70,10 @@ export const cartsSlice = createSlice({
     },
     [getCartThunk.fulfilled]: (state, action) => {
       state.isLoading = false;
+      state.data = action.payload;
+    },
+
+    [editCartThunk.fulfilled]: (state, action) => {
       state.data = action.payload;
     },
 

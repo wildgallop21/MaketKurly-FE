@@ -1,37 +1,35 @@
 
 import styled from "styled-components";
-import React , {useState, useCallback}from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
-import Input from "../elements/Input";
-import More from "../elements/More";
-import Check from "../elements/Check";
-import { getPosts, postItemThunk } from "../redux/modules/posts";
-import { createUserThunk } from "../redux/modules/users";
+import { getPosts } from "../redux/modules/posts";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getPost } from "../redux/modules/posts";
 import { postCartThunk } from "../redux/modules/carts";
+import Header from "../components/Header";
+import { useState } from "react";
 
 
-// const Detail=(posts)=>{
+
   const Detail=()=>{
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {id}  = useParams();
 
-    const itemId = id.id 
+
+
     const item_list = useSelector((state) => state.posts.posts) 
-    console.log(item_list)
+
   useEffect(() => {
     dispatch(getPosts(id))
-    dispatch(getPost(id))
-    console.log(id)
+    // dispatch(getPost(id))
+
     
   }, []);
-  console.log(id)
+
+
   
   const cartDispatch = () => {
     dispatch(
@@ -40,7 +38,23 @@ import { postCartThunk } from "../redux/modules/carts";
       })
     )
     }
-    const imgDetail = item_list[{id}.id-1]?.itemName
+
+//버튼으로 수량 변경 
+    const [num, setNum] = useState(1);
+    
+    const upCount =()=>{
+      setNum(num+1);
+    }
+    const downCount= () => {
+      setNum(num>0?num-1:0);
+    }
+    const value =(e)=>setNum(Number(e.target.value));
+
+    const price =item_list[{id}.id-1]?.itemPrice;
+
+    const setPrice = num * price
+
+
 
 
 
@@ -48,21 +62,18 @@ import { postCartThunk } from "../redux/modules/carts";
     return(
         //헤더 불러오기
         <>       
+        <Header />
          <DetailPagediv>
             <Imagediv>
-            {/* <img 
+
+            <img 
+            alt="d"
             styled={{width: "430px", height: "552px"}}
-            //이미지 받아오게끔 변경필요함 
-            src="https://img-cf.kurly.com/shop/data/goods/1655704363603l0.jpg" /> */}
-            <img  
-            styled={{width: "430px", height: "552px"}}
-            alt = "img" src= {item_list[{id}.id-1]?.itemIMG}
-          
-            ></img>
+            //이미지 받아오게끔 변경필요함 -- 변경함~
+            src={item_list[{id}.id-1]?.itemIMG} />
                     </ Imagediv>
-       <Imagediv>
-       {item_list[{id}.id-1]?.itemIMG}
-       </Imagediv>
+
+
         <Titlediv>
             {/* 상품명 */}
             {/* <Name>[YOZM]플레인그릭요거트500g</Name> */}
@@ -125,9 +136,14 @@ import { postCartThunk } from "../redux/modules/carts";
         <Option>
             <span className="count">
                 <button className="down btn"
+                onClick={downCount}
+                disabled={num < 2}
                 ></button>
-                <input className="inp"/>
-                <button className="up btn"></button>
+                <input className="inp" 
+                onChange={value}
+                value={num}/>
+                <button className="up btn"
+                onClick={upCount}></button>
             </span>
         </Option>
         </Boxwrap>
@@ -136,7 +152,11 @@ import { postCartThunk } from "../redux/modules/carts";
         <Total>
         <div className="price">
             <strong>총 상품금액 : </strong>
-            <span className="num">13,500</span>
+            <span className="num">            
+            {Number(setPrice)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </span>
             <span className="won">원</span>
         </div>
         </Total>
@@ -159,6 +179,7 @@ const DetailPagediv= styled.div`
   margin: 0 auto;
   padding-top: 20px;
   margin-bottom: 50px;
+  margin-top:5rem;
 
 `
 const Imagediv = styled.div `
@@ -293,6 +314,7 @@ const Option = styled.div`
   margin-left: 65px;
   padding-top: 0;
   overflow: hidden;
+  float:right;
   .count {
     overflow: hidden;
     float: left;

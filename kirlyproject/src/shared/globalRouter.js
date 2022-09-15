@@ -6,8 +6,6 @@ import Signup from "../pages/Signup";
 import Post from "../pages/Post";
 import CardList from "../components/CardList";
 import Detail from "../pages/Detail";
-import Card from "../components/Card";
-
 
 const Router = () => {
   return (
@@ -20,7 +18,9 @@ const Router = () => {
         <Route path="/post" element={<Post />} />
         <Route path="/cardlist" element={<CardList />} />
         <Route path="/detail/:id" element={<Detail />} />
+
         <Route path="/card" element={<Card />} />
+
 
 
       </Routes>

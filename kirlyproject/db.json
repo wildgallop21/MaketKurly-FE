@@ -1,0 +1,127 @@
+{
+  "carts": [
+    {
+      "prodcut_Id": "1",
+      "id": 1,
+      "itemName": "[주원산오리] 싸먹는 오리 슬라이스",
+      "itemPrice": "2800",
+      "itemIMG": "https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1604905794898l0.jpg"
+    },
+    {
+      "prodcut_Id": "2",
+      "id": 2
+    },
+    {
+      "prodcut_Id": "1",
+      "id": 3
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "itemName": "[주원산오리] 싸먹는 오리 슬라이스",
+      "itemPrice": "2800",
+      "itemIMG": "https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1604905794898l0.jpg"
+    },
+    {
+      "itemName": "[풀무원] 쏙떡쏙떡",
+      "itemPrice": "11980",
+      "itemIMG": "https://img-cf.kurly.com/cdn-cgi/image/width=676,format=auto/shop/data/goods/1628733352273l0.jpg",
+      "id": 2
+    },
+    {
+      "itemName": "[홍대주꾸미] 주꾸미 볶음 500g(냉동)",
+      "itemPrice": "10300",
+      "itemIMG": "https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1652685837323l0.jpg",
+      "id": 3
+    },
+    {
+      "itemName": "[비요뜨] 요거트 아이스크림 블루베리 474ml",
+      "itemPrice": "9900",
+      "itemIMG": "https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1655104984879l0.jpg",
+      "id": 4
+    },
+    {
+      "itemName": "파스타면",
+      "itemPrice": "25000",
+      "itemIMG": "https://static.wtable.co.kr/image/production/service/recipe/1767/8a70db02-325f-4dd0-9780-625a2e7cfefe.jpg",
+      "id": 5
+    },
+    {
+      "itemName": "감자",
+      "itemPrice": "10000",
+      "itemIMG": "https://www.shinsegaegroupnewsroom.com/wp-content/uploads/2020/07/%EC%9D%B4%EB%A7%88%ED%8A%B813_%EB%B3%B8%EB%AC%B801.png",
+      "id": 6
+    },
+    {
+      "itemName": "고르곤졸라피자",
+      "itemPrice": "25000",
+      "itemIMG": "https://blog.kakaocdn.net/dn/4LjO1/btqGQbzwWBd/MPbrBkBAyLgnq6VQk43eFk/img.png",
+      "id": 7
+    },
+    {
+      "itemName": "닭볽음탕",
+      "itemPrice": "350000",
+      "itemIMG": "https://images.chosun.com/resizer/5rKaicAL0edknlVwmZu4CAypSEQ=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/O3MADK4WHVFLPNV6PZ6625B2XU.jpg",
+      "id": 8
+    }
+  ],
+  "users": [
+    {
+      "id": "1pZ3UlCo1RSbpdoVU1gNG",
+      "username": "est",
+      "password": "asdfa",
+      "passwordConfirm": "sdfsdf"
+    },
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "username": "123",
+      "password": "123",
+      "id": "DH27XFr"
+    },
+    {
+      "username": "123",
+      "password": "123",
+      "id": "iwhVPLv"
+    },
+    {
+      "username": "123",
+      "password": "123",
+      "id": "vcBgggb"
+    },
+    {
+      "username": "123",
+      "password": "123",
+      "id": "KsdD11h"
+    },
+    {
+      "username": "123",
+      "password": "asd",
+      "id": "grXdaUQ"
+    },
+    {
+      "username": "test1234",
+      "password": "test1234!Q",
+      "id": "9q4AE_R"
+    },
+    {
+      "username": "test123455",
+      "password": "teset1234!Q",
+      "id": "WT0mo7B"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
