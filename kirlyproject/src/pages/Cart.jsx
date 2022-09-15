@@ -16,6 +16,7 @@ const Cart = () => {
 
 //  console.log (totalP)
   const  carts  = useSelector((state) => state.carts);
+
   console.log("carts조회",carts)
   // test
   const test = async () => {
@@ -26,12 +27,14 @@ const Cart = () => {
       console.log("err-->", err);
     }
   };
+
   useEffect(() => {
-    // test()
     dispatch(getCartThunk());
+
     dispatch(getPosts())
     dispatch(getPost())
     console.log("getcartthunk 조회", carts);
+
   }, []);
 
 
@@ -63,9 +66,11 @@ const Cart = () => {
             </FoodTitleBox>
             
             {carts?.data?.map((el, idx) => {
-              console.log(el);
+
+              // console.log(el);
               return (
                 <DivSt key={el.id}>
+
                   <CartListProduct 
                   carts={el} 
                   totalP={totalP}
@@ -85,6 +90,7 @@ const Cart = () => {
                 />
               );
             })} */}
+
 
 
                 </DivSt>

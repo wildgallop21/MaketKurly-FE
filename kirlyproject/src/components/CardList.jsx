@@ -1,18 +1,13 @@
-
 import styled from "styled-components";
-import React , {useState, useCallback}from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
-import Input from "../elements/Input";
-import More from "../elements/More";
-import Check from "../elements/Check";
-import { getPosts, postItemThunk } from "../redux/modules/posts";
-import { createUserThunk } from "../redux/modules/users";
+import { getPosts  } from "../redux/modules/posts";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Card from "./Card";
 import { Pagination, Navigation } from "swiper";
+
 
 const CardList=()=>{
   const dispatch = useDispatch();
@@ -23,40 +18,37 @@ const CardList=()=>{
   console.log(posts)
 
   useEffect(() => {
- 
     dispatch(getPosts())
-    console.log(getPosts())
   }, []);
 
 
 
   return(
     <div>
-      
+
 
       <Swiper
-          style={{
-            width: "1770px",
-            height: "570px",
-            backgroundColor: "#FFF5F1",
-            borderRadius: "12px",
-          }}
-          spaceBetween={8}
-          initialSlide={3}
-          centeredSlides={true}
-          pagination={{
-            clickable: true,
-          }}
-          slidesPerView={4}
+        // 카드를 보여주는 개수
+        slidesPerView={4}
+        // 카드 사이 공백
+        spaceBetween={0}
+        slidesPerGroup={4}
+        // 무한 루프를 돌릴 것인지
+        loop={true}
+        loopFillGroupWithBlank={true}
+        pagination={{
+          clickable: true
+        }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className="mySwiper"
 
-
-          navigation
-          autoplay={{ delay: 3000 }}
         >
                 <DivSt>
 
           {posts.map((posts, idx) => (
-          <SwiperSlide key={posts.id}><Card posts={posts}/></SwiperSlide>
+          <SwiperSlide key={posts.id}><Card posts={posts} onClick={()=>{navigate("/detail/:id")}} />
+          </SwiperSlide>
           ))}
                   </DivSt>
                   </Swiper>
